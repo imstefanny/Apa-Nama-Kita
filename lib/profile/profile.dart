@@ -1,0 +1,162 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ac_88/topup/topUp.dart';
+
+class Profile extends StatefulWidget {
+  const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  @override
+  Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.only(top: 0.03 * height),
+        width: width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('Profile',
+                style: GoogleFonts.lexendDeca(
+                    fontWeight: FontWeight.bold, fontSize: 30)),
+            Container(
+              margin: EdgeInsets.only(top: 10, bottom: 15),
+              height: 0.15 * height,
+              width: 0.15 * height,
+              child: Stack(
+                clipBehavior: Clip.none,
+                fit: StackFit.expand,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage('profile.png'),
+                  ),
+                  Positioned(
+                    bottom: -8,
+                    right: -30,
+                    child: RawMaterialButton(
+                      onPressed: () {},
+                      elevation: 2.0,
+                      fillColor: Colors.blue,
+                      child: Icon(Icons.edit, size: 20, color: Colors.white),
+                      shape: CircleBorder(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Text('Kelly',
+                style: GoogleFonts.lexendDeca(
+                    fontWeight: FontWeight.w400, fontSize: 20)),
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              height: 0.07 * height,
+              width: 0.8 * width,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.grey,
+                    offset: const Offset(0, 0),
+                    blurRadius: 10,
+                    spreadRadius: 2),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: const Offset(0.0, 0.0),
+                  blurRadius: 0.0,
+                  spreadRadius: 0.0,
+                ),
+              ], borderRadius: BorderRadius.circular(8)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.only(left: 5, right: 10),
+                    child: Icon(Icons.monetization_on_outlined,
+                        color: Colors.white),
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
+                  Text('Rp. 88,000',
+                      style: GoogleFonts.lexendDeca(
+                          fontWeight: FontWeight.w400, fontSize: 15)),
+                  Container(
+                      margin: EdgeInsets.only(right: 0.02 * width),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => TopUp()));
+                        },
+                        child: Text('Top up'),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: 0.1 * height, left: 0.025 * width, right: 0.025 * width),
+              height: 0.25 * height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 5, right: 10),
+                      padding: EdgeInsets.all(5),
+                      child: Icon(Icons.language, color: Colors.white),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Text('Languages',
+                        style: GoogleFonts.lexendDeca(
+                            fontWeight: FontWeight.w400, fontSize: 16))
+                  ]),
+                  Divider(),
+                  Row(children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 5, right: 10),
+                      padding: EdgeInsets.all(5),
+                      child: Icon(Icons.lock_outlined, color: Colors.white),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Text('Change password',
+                        style: GoogleFonts.lexendDeca(
+                            fontWeight: FontWeight.w400, fontSize: 16))
+                  ]),
+                  Divider(),
+                  Row(children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 5, right: 10),
+                      padding: EdgeInsets.all(5),
+                      child: Icon(Icons.logout, color: Colors.white),
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Text('Logout',
+                        style: GoogleFonts.lexendDeca(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: Colors.red))
+                  ]),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
