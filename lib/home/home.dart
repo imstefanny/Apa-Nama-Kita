@@ -49,7 +49,6 @@ class _HomeState extends State<Home> {
           cardWithAppBarOnly(),
         ],
       )),
-      bottomNavigationBar: BottomNavigation(),
     );
   }
 

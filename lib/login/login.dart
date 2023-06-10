@@ -1,5 +1,6 @@
 import 'package:ac_88/home/home.dart';
 import 'package:ac_88/register/registerProvider.dart';
+import 'package:ac_88/verification/verification.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ac_88/bottomnavigation.dart';
@@ -87,7 +88,7 @@ class _LoginState extends State<Login> {
                   "Forgot password ?",
                   style: GoogleFonts.lexendDeca(
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(109, 137, 239, 1),
+                    color: Colors.blue,
                     fontSize: 16,
                   ),
                 ),
@@ -129,13 +130,13 @@ class _LoginState extends State<Login> {
                         prov.setEmailEmpty = prov.tfemail.text.isEmpty;
                         prov.setPassEmpty = prov.tfpass.text.isEmpty;
 
-                        if (!prov.isEmailEmpty &&
-                            !prov.isPassEmpty) {
+                        if (!prov.isEmailEmpty && !prov.isPassEmpty) {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => Home()));
+                              builder: (_) => Verification()));
                         }
                       },
                       style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(13, 110, 253, 1),
                           minimumSize: Size(0, 60),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),

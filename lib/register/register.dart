@@ -183,13 +183,21 @@ class _RegisterState extends State<Register> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(13, 110, 253, 1),
+                              minimumSize: Size(350, 60),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
-                              child: Text('Sign up'),
+                              child: Text(
+                                'Sign up',
+                                style: GoogleFonts.lexendDeca(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
                             ))),
                   ],
                 ),
@@ -200,6 +208,10 @@ class _RegisterState extends State<Register> {
                     children: [
                       Text(
                         'Joined us before? ',
+                        style: GoogleFonts.lexendDeca(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -208,7 +220,11 @@ class _RegisterState extends State<Register> {
                         },
                         child: Text(
                           'Login',
-                          style: TextStyle(color: Colors.blue),
+                          style: GoogleFonts.lexendDeca(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.blue,
+                          ),
                         ),
                       )
                     ],
