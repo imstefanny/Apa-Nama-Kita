@@ -24,18 +24,31 @@ class _TransactionState extends State<Transaction> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            bottom: const TabBar(tabs: [
-              Tab(
-                text: "Ongoing",
-              ),
-              Tab(
-                text: "History",
-              ),
-            ]),
-            title: const Text("AC88"),
+            bottom: const TabBar(
+                physics: NeverScrollableScrollPhysics(),
+                labelColor: Colors.black,
+                indicatorColor: Color.fromRGBO(13, 110, 253, 1),
+                tabs: [
+                  Tab(
+                    text: "Ongoing",
+                  ),
+                  Tab(
+                    text: "History",
+                  ),
+                ]),
+            title: Text(
+              "AC88",
+              style: GoogleFonts.lexendDeca(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.black),
+            ),
+            backgroundColor: Colors.white,
           ),
           body: TabBarView(children: [
-            Text("Ongoing Task"),
+            Text(
+              "Ongoing Task",
+            ),
             SingleChildScrollView(
               child: Column(
                 children: [

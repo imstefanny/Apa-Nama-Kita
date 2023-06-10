@@ -10,11 +10,20 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  bool _notif = true;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          "AC88",
+          style: GoogleFonts.lexendDeca(
+              fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.only(top: 0.03 * height),
         width: width,
@@ -33,7 +42,7 @@ class _ProfileState extends State<Profile> {
                 fit: StackFit.expand,
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage('profile.png'),
+                    backgroundImage: AssetImage('assets/profile.png'),
                   ),
                   Positioned(
                     bottom: -8,
@@ -41,7 +50,7 @@ class _ProfileState extends State<Profile> {
                     child: RawMaterialButton(
                       onPressed: () {},
                       elevation: 2.0,
-                      fillColor: Colors.blue,
+                      fillColor: Color.fromRGBO(13, 110, 253, 1),
                       child: Icon(Icons.edit, size: 20, color: Colors.white),
                       shape: CircleBorder(),
                     ),
@@ -70,31 +79,36 @@ class _ProfileState extends State<Profile> {
                 ),
               ], borderRadius: BorderRadius.circular(8)),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(5),
-                    margin: EdgeInsets.only(left: 5, right: 10),
-                    child: Icon(Icons.monetization_on_outlined,
-                        color: Colors.white),
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(left: 7, right: 10),
+                    child: Icon(Icons.attach_money, color: Colors.white),
                     decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(5)),
+                        color: Color.fromRGBO(13, 110, 253, 1),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                   Text('Rp. 88,000',
                       style: GoogleFonts.lexendDeca(
                           fontWeight: FontWeight.w400, fontSize: 15)),
                   Container(
                       margin: EdgeInsets.only(right: 0.02 * width),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => TopUp()));
-                        },
-                        child: Text('Top up'),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 80),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (_) => TopUp()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5),
+                            child: Text('Top up'),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(13, 110, 253, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                           ),
                         ),
                       ))
@@ -103,7 +117,9 @@ class _ProfileState extends State<Profile> {
             ),
             Container(
               margin: EdgeInsets.only(
-                  top: 0.1 * height, left: 0.025 * width, right: 0.025 * width),
+                  top: 0.025 * height,
+                  left: 0.025 * width,
+                  right: 0.025 * width),
               height: 0.25 * height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -114,7 +130,7 @@ class _ProfileState extends State<Profile> {
                       padding: EdgeInsets.all(5),
                       child: Icon(Icons.language, color: Colors.white),
                       decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Color.fromRGBO(13, 110, 253, 1),
                           borderRadius: BorderRadius.circular(5)),
                     ),
                     Text('Languages',
@@ -128,12 +144,41 @@ class _ProfileState extends State<Profile> {
                       padding: EdgeInsets.all(5),
                       child: Icon(Icons.lock_outlined, color: Colors.white),
                       decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Color.fromRGBO(13, 110, 253, 1),
                           borderRadius: BorderRadius.circular(5)),
                     ),
                     Text('Change password',
                         style: GoogleFonts.lexendDeca(
                             fontWeight: FontWeight.w400, fontSize: 16))
+                  ]),
+                  Divider(),
+                  Row(children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 5, right: 10),
+                      padding: EdgeInsets.all(5),
+                      child: Icon(Icons.notifications, color: Colors.white),
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(13, 110, 253, 1),
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Row(
+                      children: [
+                        Text('Notifications',
+                            style: GoogleFonts.lexendDeca(
+                                fontWeight: FontWeight.w400, fontSize: 16)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 140),
+                          child: Switch(
+                              value: _notif,
+                              onChanged: (bool value) {
+                                // This is called when the user toggles the switch.
+                                setState(() {
+                                  _notif = value;
+                                });
+                              }),
+                        )
+                      ],
+                    )
                   ]),
                   Divider(),
                   Row(children: [

@@ -1,3 +1,4 @@
+import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/home/home.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/verification/verification.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Register(),
+      home: BottomNavBar(),
     );
   }
 }

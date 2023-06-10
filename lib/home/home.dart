@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:ac_88/bottomnavigation.dart';
-import 'package:ac_88/customnavigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:xen_popup_card/xen_card.dart';
@@ -21,12 +20,20 @@ class _HomeState extends State<Home> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          "AC88",
+          style: GoogleFonts.lexendDeca(
+              fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+        ),
+      ),
       body: SingleChildScrollView(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(17, 50, 25, 0),
+            padding: const EdgeInsets.fromLTRB(17, 5, 25, 0),
             child: Text(
               "Meet our Engineers",
               style: GoogleFonts.lexendDeca(
@@ -49,6 +56,7 @@ class _HomeState extends State<Home> {
           cardWithAppBarOnly(),
         ],
       )),
+      // bottomNavigationBar: BottomNavBar(),
     );
   }
 
@@ -124,7 +132,7 @@ class _HomeState extends State<Home> {
                             borderRadius: BorderRadius.circular(15)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                           children: [
                             Center(
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),

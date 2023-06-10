@@ -1,3 +1,4 @@
+import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -187,7 +188,7 @@ class _VerificationState extends State<Verification> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Home()));
+                      .push(MaterialPageRoute(builder: (_) => BottomNavBar()));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(13, 110, 253, 1),
