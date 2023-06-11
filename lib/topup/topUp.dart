@@ -21,20 +21,20 @@ class _TopUpState extends State<TopUp> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(title: Text('Top Up')),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Top up",
+          style: GoogleFonts.lexendDeca(
+              fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(25, 50, 25, 0),
-            child: Text(
-              "Top Up",
-              style: GoogleFonts.lexendDeca(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-            ),
-          ),
           Padding(
               padding: const EdgeInsets.fromLTRB(25, 25, 25, 0),
               child: Container(
@@ -278,17 +278,6 @@ class _TopUpState extends State<TopUp> {
             ),
           )
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt), label: 'Transaction'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
       ),
     );
   }

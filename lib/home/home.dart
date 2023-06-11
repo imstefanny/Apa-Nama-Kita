@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:ac_88/bottomnavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:xen_popup_card/xen_card.dart';
@@ -29,9 +28,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       body: SingleChildScrollView(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(17, 5, 25, 0),
             child: Text(
@@ -53,9 +50,37 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 18, top: 10, bottom: 10),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    minimumSize: Size(350, 55),
+                    backgroundColor: Colors.grey[200]),
+                onPressed: () {},
+                child: Wrap(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.location_on,
+                      color: Colors.red,
+                      size: 28.0,
+                    ),
+                  ),
+                  Text(
+                    "Jln. Gajah Kuda No. 12",
+                    style: GoogleFonts.lexendDeca(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ])),
+          ),
           cardWithAppBarOnly(),
-        ],
-      )),
+        ]),
+      ),
       // bottomNavigationBar: BottomNavBar(),
     );
   }
@@ -132,7 +157,7 @@ class _HomeState extends State<Home> {
                             borderRadius: BorderRadius.circular(15)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
+                          children: [
                             Center(
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),
