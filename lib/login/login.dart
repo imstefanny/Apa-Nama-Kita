@@ -1,7 +1,8 @@
+import 'package:ac_88/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tugas_kelompok/bottomnavigation.dart';
-import 'package:tugas_kelompok/transaction/transaction.dart';
+
+import '../bottomnavigation.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,6 +12,17 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var hidePass = true;
+  var email = "";
+  var pass = "";
+
+  void navigateToRegister() {
+    Navigator.pop(context);
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const Register();
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,16 +33,17 @@ class _LoginState extends State<Login> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(25, 17, 25, 0),
               child: Image.asset(
-                "assets/login.png",
-                width: 200,
-                height: 225,
+                "assets/engineer-login.png",
+                width: 285,
+                height: 285,
               ),
             ),
           ),
+          const SizedBox(height: 31),
           Padding(
             padding: const EdgeInsets.fromLTRB(25, 0, 25, 5),
             child: Text(
-              "Login",
+              "Engineer Login",
               style: GoogleFonts.lexendDeca(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
@@ -43,14 +56,19 @@ class _LoginState extends State<Login> {
               "Email Address",
               style: GoogleFonts.lexendDeca(
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 12,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(25, 5, 25, 17),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(25, 5, 25, 17),
             child: TextField(
-              decoration: InputDecoration(
+              onChanged: (text) {
+                setState(() {
+                  email = text;
+                });
+              },
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   labelText: "Enter Email Address",
@@ -66,25 +84,39 @@ class _LoginState extends State<Login> {
                   "Password",
                   style: GoogleFonts.lexendDeca(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 12,
                   ),
                 ),
                 Text(
                   "Forgot password ?",
                   style: GoogleFonts.lexendDeca(
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(109, 137, 239, 1),
-                    fontSize: 16,
+                    color: const Color.fromRGBO(109, 137, 239, 1),
+                    fontSize: 12,
                   ),
                 ),
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(25, 5, 25, 17),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(25, 5, 25, 17),
             child: TextField(
+              onChanged: (text) {
+                setState(() {
+                  pass = text;
+                });
+              },
+              obscureText: hidePass,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        hidePass = !hidePass;
+                      });
+                    },
+                    icon: const Icon(Icons.remove_red_eye_outlined),
+                  ),
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   labelText: "Min. 8 character",
                   floatingLabelBehavior: FloatingLabelBehavior.never),
@@ -99,15 +131,17 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       onPressed: () => {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => BottomNavigation()))
+                            builder: (_) => const BottomNavigation()))
                       },
                       style: ElevatedButton.styleFrom(
-                          minimumSize: Size(0, 60),
-                          primary: Colors.grey,
+                          minimumSize: const Size(0, 60),
+                          backgroundColor: (email.isEmpty || pass.isEmpty)
+                              ? Colors.grey
+                              : const Color.fromRGBO(13, 110, 253, 1),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        "Login",
+                        "Next",
                         style: GoogleFonts.lexendDeca(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -118,6 +152,26 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
+          ),
+          const SizedBox(height: 28),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("New to AC 88?",
+                  style: TextStyle(
+                      color: Color.fromRGBO(140, 140, 140, 1),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12)),
+              TextButton(
+                  onPressed: () {
+                    navigateToRegister();
+                  },
+                  child: const Text("Sign up",
+                      style: TextStyle(
+                          color: Color.fromRGBO(13, 110, 253, 1),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12)))
+            ],
           )
         ],
       ),

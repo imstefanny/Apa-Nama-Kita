@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_kelompok/home/home.dart';
-import 'package:tugas_kelompok/profile/profile.dart';
-import 'package:tugas_kelompok/transaction/transaction.dart';
+
+import 'home/home.dart';
+import 'profile/profile.dart';
+import 'transaction/transaction.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -26,7 +27,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return Scaffold(
       body: _body[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.list_alt), label: 'Transaction'),

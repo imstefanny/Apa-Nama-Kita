@@ -1,7 +1,8 @@
+import 'package:ac_88/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tugas_kelompok/home/home.dart';
-import 'package:tugas_kelompok/register/register.dart';
+
+import '../register/register.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,13 +12,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  int splashtime = 3;
+  int splashtime = 2;
 
   @override
   void initState() {
     Future.delayed(Duration(seconds: splashtime), () async {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return Register();
+        return const Login();
       }));
     });
 
