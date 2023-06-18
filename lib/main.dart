@@ -2,7 +2,6 @@ import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/home/home.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/verification/verification.dart';
-// import 'package:ac_88/verification/verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +17,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => registerProvider()),
       ChangeNotifierProvider(create: (_) => eyeProvider()),
       ChangeNotifierProvider(create: (_) => themeProvider()),
+      ChangeNotifierProvider(create: (_) => EngineerProvider()),
     ], child: const MyApp()),
   );
 }
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavBar(),
+      home: SplashScreen(),
     );
   }
 }
