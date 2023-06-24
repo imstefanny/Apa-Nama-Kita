@@ -1,10 +1,11 @@
-import 'package:ac_88/login/login.dart';
-import 'package:ac_88/register/register.dart';
-import 'package:ac_88/register/registerProvider.dart';
+import 'package:ac_88/home/chatEngineer.dart';
 import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import 'engineerHome.dart';
+import 'register/registerProvider.dart';
 
 void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => registerProvider()),
@@ -19,9 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           primarySwatch: Colors.blue,
-          textTheme:
-              GoogleFonts.lexendDecaTextTheme(Theme.of(context).textTheme)),
-      home: const Register(),
+          fontFamily: GoogleFonts.lexendDeca().fontFamily),
+      home: const SplashScreen(),
     );
   }
 }

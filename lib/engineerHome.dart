@@ -4,17 +4,17 @@ import 'home/home.dart';
 import 'profile/profile.dart';
 import 'transaction/transaction.dart';
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+class EngineerHome extends StatefulWidget {
+  const EngineerHome({super.key});
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  State<EngineerHome> createState() => _EngineerHomeState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _EngineerHomeState extends State<EngineerHome> {
   int _selectedIndex = 0;
 
-  final List _body = [Home(), Transaction(), Profile()];
+  final List _body = [const Home(), const Transaction(), const Profile()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -25,6 +25,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "AC88",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: _body[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const [

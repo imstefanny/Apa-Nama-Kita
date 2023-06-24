@@ -22,7 +22,7 @@ class _ProfileState extends State<Profile> {
               ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(500)),
                 child: Image.asset(
-                  "assets/sumin2.jpg",
+                  "assets/sumin2.png",
                   fit: BoxFit.cover,
                   width: 100,
                   height: 100,

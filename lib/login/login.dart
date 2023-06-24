@@ -1,8 +1,7 @@
+import 'package:ac_88/login/verification.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../bottomnavigation.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -129,10 +128,12 @@ class _LoginState extends State<Login> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const BottomNavigation()))
-                      },
+                      onPressed: (email.isEmpty || pass.isEmpty)
+                          ? null
+                          : () => {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => Verification(email: email)))
+                              },
                       style: ElevatedButton.styleFrom(
                           minimumSize: const Size(0, 60),
                           backgroundColor: (email.isEmpty || pass.isEmpty)
