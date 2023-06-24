@@ -12,10 +12,10 @@ class EngineerProvider extends ChangeNotifier {
         "Service": "Service AC",
         "More": 
           [
-            {"name":"Service AC","price":"250,000"},
-            {"name":"Cuci AC","price":"50,000"},
-            {"name":"Isi Freon","price":"150,000"},
-            {"name":"Ganti AC","price":"50,000"},
+            {"name":"Service AC","price":"250,000","value":false},
+            {"name":"Cuci AC","price":"50,000","value":false},
+            {"name":"Isi Freon","price":"150,000","value":false},
+            {"name":"Ganti AC","price":"50,000","value":false},
           ],
         "exp": "3",
         "desc": "Menyediakan Jasa Cuci AC dan Isi Freon"

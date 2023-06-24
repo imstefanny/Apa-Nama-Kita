@@ -191,26 +191,14 @@ class _ReservationState extends State<Reservation> {
                       padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
                       child: Card(
                         elevation: 8,
-                        child: ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${more[index]['name']}",
-                                style: GoogleFonts.lexendDeca(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                "${more[index]['price']}",
-                                style: GoogleFonts.lexendDeca(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              )
-                            ],
-                          ),
+                        child: CheckboxListTile(
+                          title: Text(more[index]['name']),
+                          value: more[index]['value'],
+                          onChanged: (bool? value) {
+                            setState(() {
+                              more[index]['value'] = value;
+                            });
+                          },
                         ),
                       ),
                     );
