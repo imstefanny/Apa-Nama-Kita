@@ -5,6 +5,8 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../currencyformat.dart';
+
 class Reservation extends StatefulWidget {
   int index;
 
@@ -172,6 +174,9 @@ class _ReservationState extends State<Reservation> {
                 ),
               ),
             ),
+            Divider(
+              thickness: 5,
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
               child: Text(
@@ -183,26 +188,110 @@ class _ReservationState extends State<Reservation> {
               ),
             ),
             Container(
-              height: 350,
+              height: 400,
               child: ListView.builder(
                   itemCount: more.length,
-                  itemBuilder: (BuildContext context, int index) {
+                  itemBuilder: (context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
-                      child: Card(
-                        elevation: 8,
-                        child: CheckboxListTile(
-                          title: Text(more[index]['name']),
-                          value: more[index]['value'],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              more[index]['value'] = value;
-                            });
-                          },
-                        ),
-                      ),
-                    );
+                        padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
+                        child: Card(
+                          elevation: 8,
+                          child: StatefulBuilder(
+                            builder: (context, _setState) => CheckboxListTile(
+                              value: more[index]['value'],
+                              onChanged: (value) {
+                                _setState(() {
+                                  more[index]['value'] = value;
+                                });
+                              },
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Text(
+                                      more[index]['name'],
+                                      style: GoogleFonts.lexendDeca(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      CurrencyFormat.convertToIdr(
+                                          more[index]['price'], 0),
+                                      style: GoogleFonts.lexendDeca(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ));
                   }),
+            ),
+            Divider(
+              thickness: 5,
+            ),
+            SizedBox(
+              width: width,
+              height: 75,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Total Bayar",
+                          style: GoogleFonts.lexendDeca(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Text(
+                            "Rp harga disini",
+                            style: GoogleFonts.lexendDeca(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.grey),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25),
+                    child: SizedBox(
+                      height: 0.065 * height,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(13, 110, 253, 1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                          onPressed: () {},
+                          child: Text(
+                            "Checkout",
+                            style: GoogleFonts.lexendDeca(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          )),
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
