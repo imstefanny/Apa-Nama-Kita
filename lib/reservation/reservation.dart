@@ -17,12 +17,13 @@ class Reservation extends StatefulWidget {
 }
 
 class _ReservationState extends State<Reservation> {
+  int total = 0;
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<registerProvider>(context);
     var engprov = Provider.of<EngineerProvider>(context);
     var engtmp = engprov.jsonData['data'];
-    var more = engtmp[widget.index]['More'];
+    var more = engtmp[widget.index]['more'];
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -193,47 +194,50 @@ class _ReservationState extends State<Reservation> {
                   itemCount: more.length,
                   itemBuilder: (context, int index) {
                     return Padding(
-                        padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
-                        child: Card(
-                          elevation: 8,
-                          child: StatefulBuilder(
-                            builder: (context, _setState) => CheckboxListTile(
-                              value: more[index]['value'],
-                              onChanged: (value) {
-                                _setState(() {
-                                  more[index]['value'] = value;
-                                });
-                              },
-                              title: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Expanded(
-                                    flex: 3,
-                                    child: Text(
-                                      more[index]['name'],
-                                      style: GoogleFonts.lexendDeca(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
+                      padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
+                      child: Card(
+                        elevation: 8,
+                        child: CheckboxListTile(
+                          value: more[index]['value'],
+                          selected: more[index]['value'],
+                          onChanged: (value) {
+                            setState(() {
+                              engprov.tesaja(widget.index, index, value!);
+                              int harga = more[index]['price'];
+                              value
+                                  ? total = total + harga
+                                  : total = total - harga;
+                            });
+                          },
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: Text(
+                                  more[index]['name'],
+                                  style: GoogleFonts.lexendDeca(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
                                   ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Text(
-                                      CurrencyFormat.convertToIdr(
-                                          more[index]['price'], 0),
-                                      style: GoogleFonts.lexendDeca(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
+                              Expanded(
+                                flex: 2,
+                                child: Text(
+                                  CurrencyFormat.convertToIdr(
+                                      more[index]['price'], 0),
+                                  style: GoogleFonts.lexendDeca(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ));
+                        ),
+                      ),
+                    );
                   }),
             ),
             Divider(
@@ -260,7 +264,7 @@ class _ReservationState extends State<Reservation> {
                         Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Text(
-                            "Rp harga disini",
+                            CurrencyFormat.convertToIdr(total, 0),
                             style: GoogleFonts.lexendDeca(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,

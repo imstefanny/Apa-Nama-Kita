@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class EngineerProvider extends ChangeNotifier {
-  final _jsonData = {
+  var JsonData = {
     "data": [
       {
         "name": "Suyanta",
@@ -10,7 +10,7 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Barat",
         "price": "250,000",
         "Service": "Service AC",
-        "More": [
+        "more": [
           {"name": "Service AC", "price": 250000, "value": false},
           {"name": "Cuci AC", "price": 50000, "value": false},
           {"name": "Isi Freon", "price": 150000, "value": false},
@@ -25,7 +25,7 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Timur",
         "price": "50,000",
         "Service": "Cuci AC",
-        "More": [
+        "more": [
           {"name": "Service AC", "price": 250000, "value": false},
           {"name": "Cuci AC", "price": 50000, "value": false},
           {"name": "Isi Freon", "price": 150000, "value": false},
@@ -40,7 +40,7 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Tuntungan",
         "price": "100,000",
         "Service": "Isi Freon",
-        "More": [
+        "more": [
           {"name": "Service AC", "price": 250000, "value": false},
           {"name": "Cuci AC", "price": 50000, "value": false},
           {"name": "Isi Freon", "price": 150000, "value": false},
@@ -55,7 +55,7 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Kota",
         "price": "225,000",
         "Service": "Service AC",
-        "More": [
+        "more": [
           {"name": "Service AC", "price": 250000, "value": false},
           {"name": "Cuci AC", "price": 50000, "value": false},
           {"name": "Isi Freon", "price": 150000, "value": false},
@@ -70,7 +70,7 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Denai",
         "price": "350,000",
         "Service": "Ganti AC",
-        "More": [
+        "more": [
           {"name": "Service AC", "price": 250000, "value": false},
           {"name": "Cuci AC", "price": 50000, "value": false},
           {"name": "Isi Freon", "price": 150000, "value": false},
@@ -85,7 +85,13 @@ class EngineerProvider extends ChangeNotifier {
   };
 
   get jsonData {
-    var tmp = json.encode(_jsonData);
+    var tmp = json.encode(JsonData);
     return json.decode(tmp);
+  }
+
+  void tesaja(int idx, int index, bool value) {
+    var tmp1 = JsonData['data']![idx]['more'] as List;
+    tmp1[index]['value'] = value;
+    notifyListeners();
   }
 }
