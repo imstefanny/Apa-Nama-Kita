@@ -1,3 +1,4 @@
+import 'package:ac_88/profile/editprofile.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +53,10 @@ class _ProfileState extends State<Profile> {
                     bottom: -8,
                     right: -30,
                     child: RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => ProfileEdit()));
+                      },
                       elevation: 2.0,
                       fillColor: Color.fromRGBO(13, 110, 253, 1),
                       child: Icon(Icons.edit, size: 20, color: Colors.white),
@@ -63,6 +67,9 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Text("${prov.tfname.text}",
+                style: GoogleFonts.lexendDeca(
+                    fontWeight: FontWeight.w400, fontSize: 20)),
+            Text("${prov.tfaddress.text}",
                 style: GoogleFonts.lexendDeca(
                     fontWeight: FontWeight.w400, fontSize: 20)),
             Container(
