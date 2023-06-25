@@ -10,13 +10,12 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Barat",
         "price": "250,000",
         "Service": "Service AC",
-        "More": 
-          [
-            {"name":"Service AC","price":"250,000"},
-            {"name":"Cuci AC","price":"50,000"},
-            {"name":"Isi Freon","price":"150,000"},
-            {"name":"Ganti AC","price":"50,000"},
-          ],
+        "More": [
+          {"name": "Service AC", "price": 250000, "value": false},
+          {"name": "Cuci AC", "price": 50000, "value": false},
+          {"name": "Isi Freon", "price": 150000, "value": false},
+          {"name": "Ganti AC", "price": 500000, "value": false},
+        ],
         "exp": "3",
         "desc": "Menyediakan Jasa Cuci AC dan Isi Freon"
       },
@@ -26,6 +25,12 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Timur",
         "price": "50,000",
         "Service": "Cuci AC",
+        "More": [
+          {"name": "Service AC", "price": 250000, "value": false},
+          {"name": "Cuci AC", "price": 50000, "value": false},
+          {"name": "Isi Freon", "price": 150000, "value": false},
+          {"name": "Ganti AC", "price": 500000, "value": false},
+        ],
         "exp": "5",
         "desc": "Menyediakan Service AC dan Isi Freon"
       },
@@ -35,6 +40,12 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Tuntungan",
         "price": "100,000",
         "Service": "Isi Freon",
+        "More": [
+          {"name": "Service AC", "price": 250000, "value": false},
+          {"name": "Cuci AC", "price": 50000, "value": false},
+          {"name": "Isi Freon", "price": 150000, "value": false},
+          {"name": "Ganti AC", "price": 500000, "value": false},
+        ],
         "exp": "1",
         "desc": "Menyediakan Jasa Cuci AC dan Service AC"
       },
@@ -44,6 +55,12 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Kota",
         "price": "225,000",
         "Service": "Service AC",
+        "More": [
+          {"name": "Service AC", "price": 250000, "value": false},
+          {"name": "Cuci AC", "price": 50000, "value": false},
+          {"name": "Isi Freon", "price": 150000, "value": false},
+          {"name": "Ganti AC", "price": 500000, "value": false},
+        ],
         "exp": "4",
         "desc": "Menyediakan Jasa Cuci AC dan Isi Freon"
       },
@@ -53,6 +70,14 @@ class EngineerProvider extends ChangeNotifier {
         "location": "Medan Denai",
         "price": "350,000",
         "Service": "Ganti AC",
+        "More": [
+          {"name": "Service AC", "price": 250000, "value": false},
+          {"name": "Cuci AC", "price": 50000, "value": false},
+          {"name": "Isi Freon", "price": 150000, "value": false},
+          {"name": "Ganti AC", "price": 700000, "value": false},
+          {"name": "Ganti Selang Bocor", "price": 200000, "value": false},
+          {"name": "Servis Kompresor AC", "price": 350000, "value": false},
+        ],
         "exp": "6",
         "desc": "Menyediakan Jasa Cuci AC dan Isi Freon"
       },
