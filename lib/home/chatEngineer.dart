@@ -5,7 +5,9 @@ import 'package:ac_88/home/outgoingChat.dart';
 import 'package:flutter/material.dart';
 
 class ChatEngineer extends StatefulWidget {
-  const ChatEngineer({super.key});
+  final String name;
+  final String imagePath;
+  const ChatEngineer({super.key, required this.name, required this.imagePath});
 
   @override
   State<ChatEngineer> createState() => _ChatEngineerState();
@@ -44,15 +46,26 @@ class _ChatEngineerState extends State<ChatEngineer> {
                           },
                           child: const Icon(Icons.arrow_back)),
                       const SizedBox(width: 8),
-                      Image.asset('assets/sumin2.png', width: 50, height: 50),
+                      widget.imagePath.contains('https')
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.network(
+                                widget.imagePath,
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ))
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.asset(widget.imagePath, width: 50)),
                       const SizedBox(width: 16),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text('Rivaldi',
-                              style: TextStyle(
+                        children: [
+                          Text(widget.name,
+                              style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
-                          Text("Jln. Asia no 18")
+                          const Text("Jln. Asia no 18")
                         ],
                       )
                     ],
@@ -98,7 +111,10 @@ class _ChatEngineerState extends State<ChatEngineer> {
                       onPressed: () {
                         showDialog(
                             context: context,
-                            builder: (_) => FinishConfirmation());
+                            builder: (_) => FinishConfirmation(
+                                  name: widget.name,
+                                  imagePath: widget.imagePath,
+                                ));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(

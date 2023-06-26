@@ -4,13 +4,17 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class FinishConfirmation extends StatefulWidget {
-  const FinishConfirmation({super.key});
+  final String name;
+  final String imagePath;
+  const FinishConfirmation(
+      {super.key, required this.name, required this.imagePath});
 
   @override
   State<FinishConfirmation> createState() => _FinishConfirmationState();
 }
 
 class _FinishConfirmationState extends State<FinishConfirmation> {
+  var confirmCode = "";
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -41,13 +45,25 @@ class _FinishConfirmationState extends State<FinishConfirmation> {
             ),
             child: Row(
               children: [
-                Image.asset('assets/sumin2.png', width: 32, height: 32),
+                widget.imagePath.contains('https')
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.network(
+                          widget.imagePath,
+                          width: 32,
+                          height: 32,
+                          fit: BoxFit.cover,
+                        ))
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(widget.imagePath, width: 32)),
                 const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text("Rivaldi"),
-                    Text("Jln. Asia no 18", style: TextStyle(fontSize: 12))
+                  children: [
+                    Text(widget.name),
+                    const Text("Jln. Asia no 18",
+                        style: TextStyle(fontSize: 12))
                   ],
                 )
               ],
@@ -61,6 +77,11 @@ class _FinishConfirmationState extends State<FinishConfirmation> {
                   fontWeight: FontWeight.w500)),
           const SizedBox(height: 10),
           TextField(
+            onChanged: (e) {
+              setState(() {
+                confirmCode = e;
+              });
+            },
             decoration: InputDecoration(
               hintText: 'Tx Code',
               filled: true,
@@ -84,9 +105,14 @@ class _FinishConfirmationState extends State<FinishConfirmation> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24)),
                   backgroundColor: const Color.fromRGBO(13, 110, 253, 1)),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: confirmCode.isEmpty
+                  ? null
+                  : () {
+                      var count = 0;
+                      Navigator.popUntil(context, (_) {
+                        return count++ == 2;
+                      });
+                    },
               child: const Padding(
                 padding:
                     EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 8),

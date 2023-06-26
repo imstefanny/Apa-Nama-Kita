@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: GoogleFonts.lexendDeca().fontFamily),
-      home: const SplashScreen(),
+      home: const EngineerHome(),
     );
   }
 }

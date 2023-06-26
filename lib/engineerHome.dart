@@ -12,7 +12,7 @@ class EngineerHome extends StatefulWidget {
 }
 
 class _EngineerHomeState extends State<EngineerHome> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   final List _body = [const Home(), const Transaction(), const Profile()];
 

@@ -189,6 +189,10 @@ class _VerificationState extends State<Verification> {
             child: Center(
               child: ElevatedButton(
                 onPressed: () {
+                  var count = 0;
+                  Navigator.popUntil(context, (_) {
+                    return count++ == 2;
+                  });
                   if (widget.email == "admin@gmail.com") {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => const AdminHome()));

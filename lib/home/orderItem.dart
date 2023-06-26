@@ -18,7 +18,7 @@ class _OrderItemState extends State<OrderItem> {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ChatEngineer();
+          return ChatEngineer(name: widget.name, imagePath: widget.imagePath);
         }));
       },
       child: Container(
@@ -47,7 +47,9 @@ class _OrderItemState extends State<OrderItem> {
                       height: 50,
                       fit: BoxFit.cover,
                     ))
-                : Image.asset(widget.imagePath, width: 50),
+                : ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(widget.imagePath, width: 50)),
             const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
