@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:ac_88/chat/chat.dart';
+import 'package:ac_88/chat/listchat.dart';
 import 'package:ac_88/enginnerdetail/engineerdetail.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,40 +56,9 @@ class _HomeState extends State<Home> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Center(
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      minimumSize: Size(350, 55),
-                      backgroundColor: Colors.grey[200]),
-                  onPressed: () {},
-                  child: Wrap(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Icon(
-                        Icons.location_on,
-                        color: Colors.red,
-                        size: 28.0,
-                      ),
-                    ),
-                    Text(
-                      "Jln. Gajah Kuda No. 12",
-                      style: GoogleFonts.lexendDeca(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ])),
-            ),
-          ),
-          Padding(
             padding: const EdgeInsets.only(left: 15, top: 8, right: 15),
             child: Container(
-              height: 550,
-              width: 450,
+              height: 0.75 * height,
               child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
@@ -162,6 +133,14 @@ class _HomeState extends State<Home> {
                   }),
             ),
           )
-        ])));
+        ])),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => ListChat()));
+          },
+          backgroundColor: Color.fromRGBO(13, 110, 253, 1),
+          child: const Icon(Icons.chat_bubble_rounded),
+        ));
   }
 }

@@ -7,6 +7,7 @@ class EngineerProvider extends ChangeNotifier {
       {
         "name": "Suyanta",
         "img": "https://loremflickr.com/320/240?random=1",
+        "address": "Jln. Tilak No 12",
         "location": "Medan Barat",
         "price": "250,000",
         "Service": "Service AC",
@@ -23,6 +24,7 @@ class EngineerProvider extends ChangeNotifier {
         "name": "Suyante",
         "img": "https://loremflickr.com/320/240?random=2",
         "location": "Medan Timur",
+        "address": "Jln. Sukasapi No 34",
         "price": "50,000",
         "Service": "Cuci AC",
         "more": [
@@ -38,6 +40,7 @@ class EngineerProvider extends ChangeNotifier {
         "name": "Suyanti",
         "img": "https://loremflickr.com/320/240?random=3",
         "location": "Medan Tuntungan",
+        "address": "Jln. Sekata No 36",
         "price": "100,000",
         "Service": "Isi Freon",
         "more": [
@@ -53,6 +56,7 @@ class EngineerProvider extends ChangeNotifier {
         "name": "Suyanto",
         "img": "https://loremflickr.com/320/240?random=4",
         "location": "Medan Kota",
+        "address": "Jln. Huria No 3",
         "price": "225,000",
         "Service": "Service AC",
         "more": [
@@ -68,6 +72,7 @@ class EngineerProvider extends ChangeNotifier {
         "name": "Suyantu",
         "img": "https://loremflickr.com/320/240?random=1",
         "location": "Medan Denai",
+        "address": "Jln. Pitak No 5",
         "price": "350,000",
         "Service": "Ganti AC",
         "more": [
