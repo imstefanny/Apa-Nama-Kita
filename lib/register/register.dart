@@ -50,11 +50,12 @@ class _RegisterState extends State<Register> {
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(height: 5),
                       TextField(
+                        onChanged: (value) {
+                          prov.setNameEmpty = prov.tfname.text.isEmpty;
+                        },
                         controller: prov.tfname,
                         decoration: InputDecoration(
                           filled: true,
-                          errorText:
-                              prov.isNameEmpty ? "Name may not be empty" : null,
                           hintText: 'Sukro',
                           hintStyle: TextStyle(fontSize: 15),
                           isDense: true,
@@ -69,12 +70,12 @@ class _RegisterState extends State<Register> {
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(height: 5),
                       TextField(
+                        onChanged: (value) {
+                          prov.setAddressEmpty = prov.tfaddress.text.isEmpty;
+                        },
                         controller: prov.tfaddress,
                         decoration: InputDecoration(
                           filled: true,
-                          errorText: prov.isAddressEmpty
-                              ? "Address may not be empty"
-                              : null,
                           hintText: 'Jln. Juda',
                           hintStyle: TextStyle(fontSize: 15),
                           isDense: true,
@@ -89,12 +90,12 @@ class _RegisterState extends State<Register> {
                               fontWeight: FontWeight.bold, fontSize: 14)),
                       SizedBox(height: 5),
                       TextField(
+                        onChanged: (value) {
+                          prov.setEmailEmpty = prov.tfemail.text.isEmpty;
+                        },
                         controller: prov.tfemail,
                         decoration: InputDecoration(
                           filled: true,
-                          errorText: prov.isEmailEmpty
-                              ? "Email may not be empty"
-                              : null,
                           hintText: 'email@domain.com',
                           hintStyle: TextStyle(fontSize: 15),
                           isDense: true,
@@ -113,13 +114,13 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: 5),
                       TextField(
+                        onChanged: (value) {
+                          prov.setPassEmpty = prov.tfpass.text.isEmpty;
+                        },
                         obscureText: eye.passhidden,
                         controller: prov.tfpass,
                         decoration: InputDecoration(
                             filled: true,
-                            errorText: prov.isPassEmpty
-                                ? "Password may not be empty"
-                                : null,
                             suffixIcon: IconButton(
                               onPressed: () {
                                 eye.setPassHidden = !eye.passhidden;
@@ -143,13 +144,13 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: 5),
                       TextField(
+                        onChanged: (value) {
+                          prov.setConfirmEmpty = prov.tfconfirm.text.isEmpty;
+                        },
                         obscureText: eye.confirmhidden,
                         controller: prov.tfconfirm,
                         decoration: InputDecoration(
                             filled: true,
-                            errorText: prov.isConfirmEmpty
-                                ? "Re-enter password may not be empty"
-                                : null,
                             hintText: 'Min. 8 characters',
                             suffixIcon: IconButton(
                               onPressed: () {
@@ -168,42 +169,32 @@ class _RegisterState extends State<Register> {
                         children: [
                           Expanded(
                               child: ElevatedButton(
-                                  onPressed: () {
-                                    prov.setNameEmpty =
-                                        prov.tfname.text.isEmpty;
-                                    prov.setAddressEmpty =
-                                        prov.tfaddress.text.isEmpty;
-                                    prov.setEmailEmpty =
-                                        prov.tfemail.text.isEmpty;
-                                    prov.setPassEmpty =
-                                        prov.tfpass.text.isEmpty;
-                                    prov.setConfirmEmpty =
-                                        prov.tfconfirm.text.isEmpty;
-
-                                    if (!prov.isNameEmpty &&
-                                        !prov.isAddressEmpty &&
-                                        !prov.isEmailEmpty &&
-                                        !prov.isPassEmpty &&
-                                        !prov.isConfirmEmpty) {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => Login()));
-                                      // Fluttertoast.showToast(
-                                      //   msg:
-                                      //       "Register berhasil. Silahkan login!",
-                                      //   toastLength: Toast.LENGTH_SHORT,
-                                      //   gravity: ToastGravity.BOTTOM,
-                                      //   timeInSecForIosWeb: 1,
-                                      //   backgroundColor: Colors.grey[800],
-                                      //   textColor: Colors.white,
-                                      // );
-                                      var _snackBar = CustomSnackBar();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                              _snackBar.getSnackBar(context, "Register berhasil. Silahkan login!"));
-                                    }
-                                  },
+                                  onPressed: (prov.isEmailEmpty ||
+                                          prov.isPassEmpty ||
+                                          prov.isConfirmEmpty ||
+                                          prov.isNameEmpty ||
+                                          prov.isAddressEmpty)
+                                      ? null
+                                      : () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) => Login()));
+                                          // Fluttertoast.showToast(
+                                          //   msg:
+                                          //       "Register berhasil. Silahkan login!",
+                                          //   toastLength: Toast.LENGTH_SHORT,
+                                          //   gravity: ToastGravity.BOTTOM,
+                                          //   timeInSecForIosWeb: 1,
+                                          //   backgroundColor: Colors.grey[800],
+                                          //   textColor: Colors.white,
+                                          // );
+                                          var _snackBar = CustomSnackBar();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(_snackBar.getSnackBar(
+                                                  context, 
+                                                  "Register berhasil. Silahkan login!"));
+                                        },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
                                         Color.fromRGBO(13, 110, 253, 1),

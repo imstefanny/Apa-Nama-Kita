@@ -7,11 +7,11 @@ class registerProvider extends ChangeNotifier {
   TextEditingController _tfname = TextEditingController();
   TextEditingController _tfaddress = TextEditingController();
 
-  bool _isEmailEmpty = false;
-  bool _isPassEmpty = false;
-  bool _isConfirmEmpty = false;
-  bool _isNameEmpty = false;
-  bool _isAddressEmpty = false;
+  bool _isEmailEmpty = true;
+  bool _isPassEmpty = true;
+  bool _isConfirmEmpty = true;
+  bool _isNameEmpty = true;
+  bool _isAddressEmpty = true;
 
   TextEditingController get tfemail => _tfemail;
   TextEditingController get tfpass => _tfpass;
@@ -29,7 +29,7 @@ class registerProvider extends ChangeNotifier {
     _isNameEmpty = value;
     notifyListeners();
   }
-  
+
   set setAddressEmpty(value) {
     _isAddressEmpty = value;
     notifyListeners();
