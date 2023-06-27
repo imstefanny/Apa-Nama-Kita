@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:ac_88/login/login.dart';
 import 'package:ac_88/register/registerProvider.dart';
 
+import '../snackbar.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -187,14 +189,19 @@ class _RegisterState extends State<Register> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (_) => Login()));
-                                      Fluttertoast.showToast(
-                                        msg:
-                                            "Register berhasil. Silahkan login!",
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.BOTTOM,
-                                        backgroundColor: Colors.grey[800],
-                                        textColor: Colors.white,
-                                      );
+                                      // Fluttertoast.showToast(
+                                      //   msg:
+                                      //       "Register berhasil. Silahkan login!",
+                                      //   toastLength: Toast.LENGTH_SHORT,
+                                      //   gravity: ToastGravity.BOTTOM,
+                                      //   timeInSecForIosWeb: 1,
+                                      //   backgroundColor: Colors.grey[800],
+                                      //   textColor: Colors.white,
+                                      // );
+                                      var _snackBar = CustomSnackBar();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                              _snackBar.getSnackBar(context, "Register berhasil. Silahkan login!"));
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
