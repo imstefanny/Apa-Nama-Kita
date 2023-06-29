@@ -13,7 +13,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedNavBar = 1;
+  int _selectedNavBar = 0;
   Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
     0: GlobalKey<NavigatorState>(),
     1: GlobalKey<NavigatorState>(),
@@ -21,8 +21,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   };
 
   final List<Widget> _body = [
-    const Transaction(),
     const Home(),
+    const Transaction(),
     const Profile()
   ];
 
@@ -41,11 +41,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt), label: 'Transaction'),
-          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt), label: 'Transaction'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
         ],
         selectedItemColor: Colors.blue,
