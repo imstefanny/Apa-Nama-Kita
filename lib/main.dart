@@ -1,5 +1,6 @@
 import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/home/home.dart';
+import 'package:ac_88/payment/payment.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/reservation/reservation.dart';
 import 'package:ac_88/verification/verification.dart';

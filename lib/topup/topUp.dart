@@ -1,3 +1,4 @@
+import 'package:ac_88/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -107,7 +108,7 @@ class _TopUpState extends State<TopUp> {
                                   color: Colors.white,
                                 ),
                                 decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    color: Color.fromRGBO(13, 110, 253, 1),
                                     borderRadius: BorderRadius.circular(5)),
                               ),
                               Text("Rp 50,000",
@@ -134,7 +135,7 @@ class _TopUpState extends State<TopUp> {
                                   color: Colors.white,
                                 ),
                                 decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    color: Color.fromRGBO(13, 110, 253, 1),
                                     borderRadius: BorderRadius.circular(5)),
                               ),
                               Text("Rp 100,000",
@@ -161,7 +162,7 @@ class _TopUpState extends State<TopUp> {
                                   color: Colors.white,
                                 ),
                                 decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    color: Color.fromRGBO(13, 110, 253, 1),
                                     borderRadius: BorderRadius.circular(5)),
                               ),
                               Text("Rp 150,000",
@@ -194,7 +195,7 @@ class _TopUpState extends State<TopUp> {
                                     color: Colors.white,
                                   ),
                                   decoration: BoxDecoration(
-                                      color: Colors.blue,
+                                      color: Color.fromRGBO(13, 110, 253, 1),
                                       borderRadius: BorderRadius.circular(5)),
                                 ),
                                 Text("Rp 200,000",
@@ -221,7 +222,7 @@ class _TopUpState extends State<TopUp> {
                                     color: Colors.white,
                                   ),
                                   decoration: BoxDecoration(
-                                      color: Colors.blue,
+                                      color: Color.fromRGBO(13, 110, 253, 1),
                                       borderRadius: BorderRadius.circular(5)),
                                 ),
                                 Text("Rp 250,000",
@@ -248,7 +249,7 @@ class _TopUpState extends State<TopUp> {
                                     color: Colors.white,
                                   ),
                                   decoration: BoxDecoration(
-                                      color: Colors.blue,
+                                      color: Color.fromRGBO(13, 110, 253, 1),
                                       borderRadius: BorderRadius.circular(5)),
                                 ),
                                 Text("Rp 300,000",
@@ -261,17 +262,24 @@ class _TopUpState extends State<TopUp> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 55),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: Size(250, 55),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                    onPressed: () {},
-                    child: Text("Pay",
-                        style: GoogleFonts.lexendDeca(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold)),
+                  child: SizedBox(
+                    height: 55,
+                    width: 250,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(13, 110, 253, 1),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) => Payment()));
+                      },
+                      child: Text("Pay",
+                          style: GoogleFonts.lexendDeca(
+                              fontSize: 12,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    ),
                   ),
                 )
               ],
