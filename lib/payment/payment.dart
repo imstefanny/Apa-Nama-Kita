@@ -9,11 +9,16 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
-  int _selectedIndex = 2;
+  bool _isLoading = true;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
+  @override
+  void initState() {
+    super.initState();
+    // Simulating image loading delay
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _isLoading = false;
+      });
     });
   }
 
@@ -61,7 +66,7 @@ class _PaymentState extends State<Payment> {
                         Expanded(
                             flex: 2,
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(17, 0, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(17, 15, 0, 15),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -103,10 +108,12 @@ class _PaymentState extends State<Payment> {
               Center(
                   child: Padding(
                 padding: const EdgeInsets.only(top: 17),
-                child: Image.network(
-                  "https://www.freepnglogos.com/uploads/barcode-png/barcode-openkm-18.png",
-                  width: 200,
-                ),
+                child: _isLoading
+                    ? CircularProgressIndicator() // Display the progress indicator while loading
+                    : Image.network(
+                        'https://www.freepnglogos.com/uploads/barcode-png/barcode-openkm-18.png',
+                        width: 200,
+                      ),
               )),
               Padding(
                 padding: const EdgeInsets.only(top: 17, left: 25),
