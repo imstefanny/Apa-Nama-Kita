@@ -15,6 +15,17 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  String? password;
+  String? confirmPassword;
+  bool passwordMatch = true;
+
+  void validatePassword() {
+    if (password == confirmPassword) {
+      passwordMatch = true;
+    } else
+      passwordMatch = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<registerProvider>(context);
@@ -116,6 +127,9 @@ class _RegisterState extends State<Register> {
                       TextField(
                         onChanged: (value) {
                           prov.setPassEmpty = prov.tfpass.text.isEmpty;
+                          setState(() {
+                            password = value;
+                          });
                         },
                         obscureText: eye.passhidden,
                         controller: prov.tfpass,
@@ -146,10 +160,17 @@ class _RegisterState extends State<Register> {
                       TextField(
                         onChanged: (value) {
                           prov.setConfirmEmpty = prov.tfconfirm.text.isEmpty;
+                          setState(() {
+                            confirmPassword = value;
+                            validatePassword();
+                          });
                         },
                         obscureText: eye.confirmhidden,
                         controller: prov.tfconfirm,
                         decoration: InputDecoration(
+                            errorText: !passwordMatch
+                                ? 'Passwords do not match'
+                                : null,
                             filled: true,
                             hintText: 'Min. 8 characters',
                             suffixIcon: IconButton(
@@ -173,7 +194,8 @@ class _RegisterState extends State<Register> {
                                           prov.isPassEmpty ||
                                           prov.isConfirmEmpty ||
                                           prov.isNameEmpty ||
-                                          prov.isAddressEmpty)
+                                          prov.isAddressEmpty ||
+                                          !passwordMatch)
                                       ? null
                                       : () {
                                           Navigator.push(
@@ -192,7 +214,7 @@ class _RegisterState extends State<Register> {
                                           var _snackBar = CustomSnackBar();
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(_snackBar.getSnackBar(
-                                                  context, 
+                                                  context,
                                                   "Register berhasil. Silahkan login!"));
                                         },
                                   style: ElevatedButton.styleFrom(
