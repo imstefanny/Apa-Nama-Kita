@@ -1,7 +1,9 @@
 import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/home/home.dart';
+import 'package:ac_88/payment/payment.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/reservation/reservation.dart';
+import 'package:ac_88/topup/topUp.dart';
 import 'package:ac_88/verification/verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Reservation(index: 0),
+      home: TopUp(),
     );
   }
 }

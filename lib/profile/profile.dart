@@ -1,4 +1,5 @@
 import 'package:ac_88/profile/editprofile.dart';
+import 'package:ac_88/register/register.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -201,11 +202,70 @@ class _ProfileState extends State<Profile> {
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(5)),
                     ),
-                    Text('Logout',
-                        style: GoogleFonts.lexendDeca(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: Colors.red))
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Column(
+                                  children: [
+                                    Text(
+                                      "Logout",
+                                      style: GoogleFonts.lexendDeca(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    Divider(
+                                      thickness: 3,
+                                    )
+                                  ],
+                                ),
+                                content: Text(
+                                  "Are your sure you want to log out?",
+                                  style: GoogleFonts.lexendDeca(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, 'Cancel');
+                                      },
+                                      child: Text(
+                                        "Cancel",
+                                        style: GoogleFonts.lexendDeca(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400),
+                                      )),
+                                  SizedBox(
+                                    height: 35,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (_) => Register()));
+                                      },
+                                      child: Text("Logout",
+                                          style: GoogleFonts.lexendDeca(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400)),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                      child: Text('Logout',
+                          style: GoogleFonts.lexendDeca(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              color: Colors.red)),
+                    )
                   ]),
                 ],
               ),
