@@ -10,16 +10,17 @@ class TopUp extends StatefulWidget {
 }
 
 class _TopUpState extends State<TopUp> {
-  int _selectedIndex = 2;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  bool enableBorder1 = false;
+  bool enableBorder2 = false;
+  bool enableBorder3 = false;
+  bool enableBorder4 = false;
+  bool enableBorder5 = false;
+  bool enableBorder6 = false;
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -42,8 +43,8 @@ class _TopUpState extends State<TopUp> {
                 decoration: BoxDecoration(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(15)),
-                height: 120,
-                width: 350,
+                height: 0.145 * height,
+                width: 0.87 * width,
                 child: Row(
                   children: [
                     Expanded(
@@ -59,7 +60,7 @@ class _TopUpState extends State<TopUp> {
                     Expanded(
                         flex: 2,
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(17, 0, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(17, 15, 0, 15),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -88,20 +89,26 @@ class _TopUpState extends State<TopUp> {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 18),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => enableBorder1 = !enableBorder1);
+                      },
                       child: Container(
                           decoration: BoxDecoration(
+                              border: enableBorder1
+                                  ? Border.all(color: Colors.blue, width: 2)
+                                  : null,
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(15)),
-                          height: 85,
-                          width: 85,
+                          height: 0.103 * height,
+                          width: 0.103 * height,
                           child: Column(
                             children: [
                               Container(
-                                height: 35,
-                                width: 35,
+                                height: 0.085 * width,
+                                width: 0.085 * width,
                                 margin: EdgeInsets.all(15),
                                 child: Icon(
                                   Icons.monetization_on,
@@ -116,19 +123,24 @@ class _TopUpState extends State<TopUp> {
                             ],
                           )),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 26),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => enableBorder2 = !enableBorder2);
+                      },
                       child: Container(
                           decoration: BoxDecoration(
+                              border: enableBorder2
+                                  ? Border.all(color: Colors.blue, width: 2)
+                                  : null,
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(15)),
-                          height: 85,
-                          width: 85,
+                          height: 0.103 * height,
+                          width: 0.103 * height,
                           child: Column(
                             children: [
                               Container(
-                                height: 35,
-                                width: 35,
+                                height: 0.085 * width,
+                                width: 0.085 * width,
                                 margin: EdgeInsets.all(15),
                                 child: Icon(
                                   Icons.monetization_on,
@@ -143,19 +155,24 @@ class _TopUpState extends State<TopUp> {
                             ],
                           )),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 40),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => enableBorder3 = !enableBorder3);
+                      },
                       child: Container(
                           decoration: BoxDecoration(
+                              border: enableBorder3
+                                  ? Border.all(color: Colors.blue, width: 2)
+                                  : null,
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(15)),
-                          height: 85,
-                          width: 85,
+                          height: 0.103 * height,
+                          width: 0.103 * height,
                           child: Column(
                             children: [
                               Container(
-                                height: 35,
-                                width: 35,
+                                height: 0.085 * width,
+                                width: 0.085 * width,
                                 margin: EdgeInsets.all(15),
                                 child: Icon(
                                   Icons.monetization_on,
@@ -175,20 +192,26 @@ class _TopUpState extends State<TopUp> {
                 Padding(
                   padding: const EdgeInsets.only(top: 55),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 18),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() => enableBorder4 = !enableBorder4);
+                        },
                         child: Container(
                             decoration: BoxDecoration(
+                                border: enableBorder4
+                                    ? Border.all(color: Colors.blue, width: 2)
+                                    : null,
                                 color: Colors.grey[200],
                                 borderRadius: BorderRadius.circular(15)),
-                            height: 85,
-                            width: 85,
+                            height: 0.103 * height,
+                            width: 0.103 * height,
                             child: Column(
                               children: [
                                 Container(
-                                  height: 35,
-                                  width: 35,
+                                  height: 0.085 * width,
+                                  width: 0.085 * width,
                                   margin: EdgeInsets.all(15),
                                   child: Icon(
                                     Icons.monetization_on,
@@ -203,19 +226,24 @@ class _TopUpState extends State<TopUp> {
                               ],
                             )),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 26),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() => enableBorder5 = !enableBorder5);
+                        },
                         child: Container(
                             decoration: BoxDecoration(
+                                border: enableBorder5
+                                    ? Border.all(color: Colors.blue, width: 2)
+                                    : null,
                                 color: Colors.grey[200],
                                 borderRadius: BorderRadius.circular(15)),
-                            height: 85,
-                            width: 85,
+                            height: 0.103 * height,
+                            width: 0.103 * height,
                             child: Column(
                               children: [
                                 Container(
-                                  height: 35,
-                                  width: 35,
+                                  height: 0.085 * width,
+                                  width: 0.085 * width,
                                   margin: EdgeInsets.all(15),
                                   child: Icon(
                                     Icons.monetization_on,
@@ -230,19 +258,24 @@ class _TopUpState extends State<TopUp> {
                               ],
                             )),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 40),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() => enableBorder6 = !enableBorder6);
+                        },
                         child: Container(
                             decoration: BoxDecoration(
+                                border: enableBorder6
+                                    ? Border.all(color: Colors.blue, width: 2)
+                                    : null,
                                 color: Colors.grey[200],
                                 borderRadius: BorderRadius.circular(15)),
-                            height: 85,
-                            width: 85,
+                            height: 0.103 * height,
+                            width: 0.103 * height,
                             child: Column(
                               children: [
                                 Container(
-                                  height: 35,
-                                  width: 35,
+                                  height: 0.085 * width,
+                                  width: 0.085 * width,
                                   margin: EdgeInsets.all(15),
                                   child: Icon(
                                     Icons.monetization_on,
@@ -284,7 +317,7 @@ class _TopUpState extends State<TopUp> {
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );
