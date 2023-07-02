@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ac_88/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -17,12 +18,16 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
-  Future pickImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  File? image;
+
+  Future pickImage(source) async {
+    final image = await ImagePicker().pickImage(source: source);
     if (image == null) return;
 
     final imageTmp = File(image.path);
-    // this.image = imageTmp;
+    setState(() {
+      this.image = imageTmp;
+    });
   }
 
   @override
@@ -60,11 +65,20 @@ class _ProfileEditState extends State<ProfileEdit> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                      radius: 75,
-                      backgroundImage: NetworkImage(
-                          "https://loremflickr.com/320/240?random=8"),
-                    ),
+                    image != null
+                        ? ClipOval(
+                            child: Image.file(
+                              image!,
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : CircleAvatar(
+                            radius: 75,
+                            backgroundImage: NetworkImage(
+                                "https://loremflickr.com/320/240?random=8"),
+                          ),
                     Padding(
                       padding: EdgeInsets.only(right: 0.1 * width),
                       child: SizedBox(
@@ -80,7 +94,39 @@ class _ProfileEditState extends State<ProfileEdit> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)))),
-                            onPressed: () {},
+                            onPressed: () {
+                              showModalBottomSheet<void>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      height: 200,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                                child: const Text(
+                                                    'Choose from galery'),
+                                                onPressed: () {
+                                                  pickImage(
+                                                      ImageSource.gallery);
+                                                  Navigator.pop(context);
+                                                }),
+                                            ElevatedButton(
+                                                child: const Text(
+                                                    'Choose from camera'),
+                                                onPressed: () {
+                                                  pickImage(ImageSource.camera);
+                                                  Navigator.pop(context);
+                                                }),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            },
                             child: Text("Choose photo",
                                 style: GoogleFonts.lexendDeca(
                                     fontWeight: FontWeight.bold,
@@ -149,7 +195,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20)))),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => Profile()));
+                          },
                           child: Text("Save",
                               style: GoogleFonts.lexendDeca(
                                   fontWeight: FontWeight.bold,

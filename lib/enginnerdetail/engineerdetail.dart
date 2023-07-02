@@ -117,6 +117,7 @@ class _EngineerDetailState extends State<EngineerDetail> {
           onPressed: () {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (_) => Reservation(index: widget.index,)));
+            Navigator.pop(context);
           },
           child: Text("Reserved"),
           style: ElevatedButton.styleFrom(
