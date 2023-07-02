@@ -84,7 +84,7 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
         }
       },
       child: Container(
-        width: 0.3 * width,
+        width: 0.25 * width,
         height: 60.0,
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -103,7 +103,7 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
     return GestureDetector(
       onTap: deleteDigit,
       child: Container(
-        width: 0.3 * width,
+        width: 0.25 * width,
         height: 60.0,
         alignment: Alignment.center,
         decoration: BoxDecoration(
