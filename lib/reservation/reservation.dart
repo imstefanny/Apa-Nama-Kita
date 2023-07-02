@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../currencyformat.dart';
+import '../transaction/confirmPayment.dart';
 
 class Reservation extends StatefulWidget {
   int index;
@@ -284,7 +285,9 @@ class _ReservationState extends State<Reservation> {
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)))),
-                          onPressed: () {},
+                          onPressed: () { 
+                            Navigator.push(context, MaterialPageRoute(
+                                                  builder: (_) => (ConfirmPaymentPage())));},
                           child: Text(
                             "Checkout",
                             style: GoogleFonts.lexendDeca(
