@@ -82,7 +82,7 @@ class _RegisterDataState extends State<RegisterData> {
               decoration: const InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
-                  labelText: "1",
+                  labelText: "Years of experience Ex: 4",
                   floatingLabelBehavior: FloatingLabelBehavior.never),
             ),
             const SizedBox(height: 9),

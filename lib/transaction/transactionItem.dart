@@ -3,7 +3,14 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class TransactionItem extends StatefulWidget {
-  const TransactionItem({super.key});
+  final String name;
+  final String action;
+  final String price;
+  const TransactionItem(
+      {super.key,
+      required this.name,
+      required this.action,
+      required this.price});
 
   @override
   State<TransactionItem> createState() => _TransactionItemState();
@@ -36,17 +43,18 @@ class _TransactionItemState extends State<TransactionItem> {
         const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text("Meow meow",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-            Text("Ganti Kompressor",
-                style: TextStyle(
+          children: [
+            Text(widget.name,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            Text(widget.action,
+                style: const TextStyle(
                     fontSize: 12, color: Color.fromRGBO(140, 140, 140, 1)))
           ],
         ),
         const Spacer(),
-        const Text("Rp. 23,000",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+        Text(widget.price,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
       ]),
     );
   }

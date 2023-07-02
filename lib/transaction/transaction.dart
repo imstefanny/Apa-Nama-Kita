@@ -1,4 +1,5 @@
 import 'package:ac_88/transaction/transactionItem.dart';
+import 'package:ac_88/transaction/withdraw.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -69,11 +70,22 @@ class _TransactionState extends State<Transaction> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16)),
                         backgroundColor: const Color.fromRGBO(13, 110, 253, 1)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const Withdraw();
+                      }));
+                    },
                     child: const Text("Withdraw"),
                   ),
                   const SizedBox(height: 24),
-                  const TransactionItem(),
+                  const TransactionItem(
+                      name: 'Meow meow',
+                      price: 'Rp240,000',
+                      action: 'Ganti Kompressor'),
+                  const SizedBox(height: 16),
+                  const TransactionItem(
+                      name: 'Rivaldi', price: 'Rp80,000', action: 'Cuci AC'),
                 ]),
           ),
         ),
