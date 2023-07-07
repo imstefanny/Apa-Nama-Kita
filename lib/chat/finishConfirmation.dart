@@ -71,7 +71,7 @@ class _FinishConfirmationState extends State<FinishConfirmation> {
           ),
           const SizedBox(height: 10),
           const Text(
-              "Fill the code that customer give to you, after that your transaction will finish",
+              "Fill the code that engineer give to you, after that your transaction will finish",
               style: TextStyle(
                   color: Color.fromRGBO(140, 140, 140, 1),
                   fontWeight: FontWeight.w500)),

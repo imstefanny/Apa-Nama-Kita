@@ -3,6 +3,8 @@ import 'package:ac_88/transaction/transactionWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../chat/chat.dart';
+
 class Transaction extends StatefulWidget {
   const Transaction({super.key});
 
@@ -168,10 +170,13 @@ class _TransactionState extends State<Transaction> {
                                         onPressed: () {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
-                                                  builder: (_) =>
-                                                      DetailOngoing()));
+                                                  builder: (_) => ChatCustomer(
+                                                      name: "Diding",
+                                                      imagePath:
+                                                          "assets/profile.png",
+                                                      index: 1)));
                                         },
-                                        child: Text("See Details")),
+                                        child: Text("Chat")),
                                   )
                                 ],
                               ),
