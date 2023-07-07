@@ -18,12 +18,14 @@ class TransactionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Padding(
         padding: const EdgeInsets.fromLTRB(17, 20, 17, 0),
         child: Container(
           decoration: BoxDecoration(
               color: Colors.grey[200], borderRadius: BorderRadius.circular(10)),
-          height: 155,
+          height: 0.2 * height,
           width: 350,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,19 +137,6 @@ class TransactionWidget extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 8, top: 8),
-                              child: ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text("Re-Order"),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        Color.fromRGBO(13, 110, 253, 1),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                  )),
-                            )
                           ],
                         )
                       : Row(

@@ -115,9 +115,10 @@ class _EngineerDetailState extends State<EngineerDetail> {
         padding: const EdgeInsets.only(top: 15),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Reservation(index: widget.index,)));
-            Navigator.pop(context);
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => Reservation(
+                      index: widget.index,
+                    )));
           },
           child: Text("Reserved"),
           style: ElevatedButton.styleFrom(

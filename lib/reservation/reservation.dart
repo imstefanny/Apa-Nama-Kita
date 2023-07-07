@@ -190,56 +190,55 @@ class _ReservationState extends State<Reservation> {
               ),
             ),
             Container(
-              height: 400,
-              child: ListView.builder(
-                  itemCount: more.length,
-                  itemBuilder: (context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
-                      child: Card(
-                        elevation: 8,
-                        child: CheckboxListTile(
-                          value: more[index]['value'],
-                          selected: more[index]['value'],
-                          onChanged: (value) {
-                            setState(() {
-                              engprov.tesaja(widget.index, index, value!);
-                              int harga = more[index]['price'];
-                              value
-                                  ? total = total + harga
-                                  : total = total - harga;
-                            });
-                          },
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Expanded(
-                                flex: 3,
-                                child: Text(
-                                  more[index]['name'],
-                                  style: GoogleFonts.lexendDeca(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+              height: 0.38 * height,
+              child: Column(children: [
+                for (var i = 0; i < more.length; i++)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(17, 5, 25, 5),
+                    child: Card(
+                      elevation: 8,
+                      child: CheckboxListTile(
+                        value: more[i]['value'],
+                        selected: more[i]['value'],
+                        onChanged: (value) {
+                          setState(() {
+                            engprov.tesaja(widget.index, i, value!);
+                            int harga = more[i]['price'];
+                            value
+                                ? total = total + harga
+                                : total = total - harga;
+                          });
+                        },
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                more[i]['name'],
+                                style: GoogleFonts.lexendDeca(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
                               ),
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  CurrencyFormat.convertToIdr(
-                                      more[index]['price'], 0),
-                                  style: GoogleFonts.lexendDeca(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                CurrencyFormat.convertToIdr(
+                                    more[i]['price'], 0),
+                                style: GoogleFonts.lexendDeca(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  }),
+                    ),
+                  )
+              ]),
             ),
             Divider(
               thickness: 5,
@@ -285,9 +284,12 @@ class _ReservationState extends State<Reservation> {
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)))),
-                          onPressed: () { 
-                            Navigator.push(context, MaterialPageRoute(
-                                                  builder: (_) => (ConfirmPaymentPage())));},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => (ConfirmPaymentPage())));
+                          },
                           child: Text(
                             "Checkout",
                             style: GoogleFonts.lexendDeca(
