@@ -13,66 +13,30 @@ class DetailOngoing extends StatefulWidget {
 class _DetailOngoingState extends State<DetailOngoing> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        backgroundColor: Colors.white,
-        title: Text(
-          "Details",
-          style: GoogleFonts.lexendDeca(
-              fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(17, 25, 25, 0),
-            child: Container(
-              height: 155,
-              width: 350,
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Center(
-                      child: Text(
-                        "Isi ulang Freon",
-                        style: GoogleFonts.lexendDeca(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Center(
-                          child: Text(
-                            "Engineer :",
-                            style: GoogleFonts.lexendDeca(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    return Dialog(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Container(
+          height: 155,
+          child: Column(
+            children: [
+              Text(
+                "Your order :",
+                style: GoogleFonts.lexendDeca(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
-            ),
+              Text("Engineer Name : Diding",
+                  style: GoogleFonts.lexendDeca(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  )),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
