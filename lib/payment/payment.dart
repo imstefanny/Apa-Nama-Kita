@@ -40,7 +40,7 @@ class _PaymentState extends State<Payment> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            height: 0.9 * height,
+            height: 1 * height,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Padding(

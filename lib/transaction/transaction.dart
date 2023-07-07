@@ -11,16 +11,10 @@ class Transaction extends StatefulWidget {
 }
 
 class _TransactionState extends State<Transaction> {
-  int _selectedIndex = 1;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -50,7 +44,7 @@ class _TransactionState extends State<Transaction> {
             Padding(
               padding: const EdgeInsets.fromLTRB(17, 20, 17, 0),
               child: Container(
-                height: 155,
+                height: 0.225 * height,
                 width: 350,
                 decoration: BoxDecoration(
                     color: Colors.grey[200],
@@ -169,10 +163,10 @@ class _TransactionState extends State<Transaction> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (_) =>
-                                                    DetailOngoing()));
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                DetailOngoing());
                                       },
                                       child: Text("See Details")),
                                 )
