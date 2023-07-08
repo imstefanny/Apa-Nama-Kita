@@ -28,6 +28,7 @@ class _PaymentState extends State<Payment> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
+          elevation: 2,
           iconTheme: IconThemeData(
             color: Colors.black, //change your color here
           ),

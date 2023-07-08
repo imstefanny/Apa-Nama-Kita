@@ -24,6 +24,7 @@ class _TopUpState extends State<TopUp> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),

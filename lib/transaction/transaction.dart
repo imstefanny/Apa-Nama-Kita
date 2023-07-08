@@ -1,3 +1,4 @@
+import 'package:ac_88/transaction/OrderDetail.dart';
 import 'package:ac_88/transaction/transactionWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,7 @@ class _TransactionState extends State<Transaction> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            elevation: 2,
             bottom: const TabBar(
                 physics: NeverScrollableScrollPhysics(),
                 labelColor: Colors.black,
@@ -194,28 +196,32 @@ class _TransactionState extends State<Transaction> {
                   TransactionWidget(
                     name: "Dudung",
                     problem: "Selang AC Bocor",
-                    price: "120,000",
+                    price: 120000,
+                    price1: 115560,
                     status: false,
                     date: '28 April 2023',
                   ),
                   TransactionWidget(
                     name: "Dadang",
                     problem: "Cuci AC",
-                    price: "50,000",
+                    price: 50000,
+                    price1: 48150,
                     status: true,
                     date: '23 April 2023',
                   ),
                   TransactionWidget(
                     name: "Dodong",
                     problem: "Freon Bocor",
-                    price: "150,000",
+                    price: 150000,
+                    price1: 144450,
                     status: false,
                     date: '18 April 2023',
                   ),
                   TransactionWidget(
                     name: "Dedeng",
                     problem: "Compresor Rusak",
-                    price: "350,000",
+                    price: 350000,
+                    price1: 337050,
                     status: false,
                     date: '14 April 2023',
                   ),
