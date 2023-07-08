@@ -30,6 +30,7 @@ class _ReservationState extends State<Reservation> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        elevation: 2,
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),

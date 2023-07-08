@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ac_88/profile/ChangePassword.dart';
 import 'package:ac_88/profile/editprofile.dart';
 import 'package:ac_88/profile/imgprovider.dart';
 import 'package:ac_88/register/register.dart';
@@ -26,6 +27,7 @@ class _ProfileState extends State<Profile> {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
         backgroundColor: Colors.white,
         title: Text(
           "AC88",
@@ -51,19 +53,19 @@ class _ProfileState extends State<Profile> {
                 fit: StackFit.expand,
                 children: [
                   imgprov.img != null
-                                ? ClipOval(
-                                    child: Image.file(
-                                      File(imgprov.img!.path),
-                                      width: 150,
-                                      height: 150,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                : CircleAvatar(
-                                    radius: 75,
-                                    backgroundImage: NetworkImage(
-                                        "https://loremflickr.com/320/240?random=8"),
-                                  ),
+                      ? ClipOval(
+                          child: Image.file(
+                            File(imgprov.img!.path),
+                            width: 150,
+                            height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 75,
+                          backgroundImage: NetworkImage(
+                              "https://loremflickr.com/320/240?random=8"),
+                        ),
                   Positioned(
                     bottom: -8,
                     right: -30,
@@ -164,19 +166,25 @@ class _ProfileState extends State<Profile> {
                             fontWeight: FontWeight.w400, fontSize: 16))
                   ]),
                   Divider(),
-                  Row(children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 5, right: 10),
-                      padding: EdgeInsets.all(5),
-                      child: Icon(Icons.lock_outlined, color: Colors.white),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(13, 110, 253, 1),
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    Text('Change password',
-                        style: GoogleFonts.lexendDeca(
-                            fontWeight: FontWeight.w400, fontSize: 16))
-                  ]),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => ChangePassword()));
+                    },
+                    child: Row(children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5, right: 10),
+                        padding: EdgeInsets.all(5),
+                        child: Icon(Icons.lock_outlined, color: Colors.white),
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(13, 110, 253, 1),
+                            borderRadius: BorderRadius.circular(5)),
+                      ),
+                      Text('Change password',
+                          style: GoogleFonts.lexendDeca(
+                              fontWeight: FontWeight.w400, fontSize: 16))
+                    ]),
+                  ),
                   Divider(),
                   Row(children: [
                     Container(

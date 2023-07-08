@@ -18,6 +18,7 @@ class _ListChatState extends State<ListChat> {
     var tmp = prov.jsonData['data'];
     return Scaffold(
         appBar: AppBar(
+          elevation: 2,
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,
           title: Text(

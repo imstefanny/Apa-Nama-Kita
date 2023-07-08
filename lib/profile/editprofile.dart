@@ -26,6 +26,7 @@ class _ProfileEditState extends State<ProfileEdit> {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),

@@ -24,6 +24,7 @@ class _HomeState extends State<Home> {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
+          elevation: 2,
           backgroundColor: Colors.white,
           title: Text(
             "AC88",

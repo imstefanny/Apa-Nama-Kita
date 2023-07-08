@@ -6,6 +6,7 @@ import 'package:ac_88/profile/imgprovider.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/reservation/reservation.dart';
 import 'package:ac_88/topup/topUp.dart';
+import 'package:ac_88/transaction/OrderDetail.dart';
 import 'package:ac_88/transaction/confirmPayment.dart';
 import 'package:ac_88/verification/verification.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: SplashScreen()
     );
   }
 }
