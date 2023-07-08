@@ -109,7 +109,12 @@ class _PaymentState extends State<Payment> {
                   child: Padding(
                 padding: const EdgeInsets.only(top: 17),
                 child: _isLoading
-                    ? CircularProgressIndicator() // Display the progress indicator while loading
+                    ? TweenAnimationBuilder<double>(
+                        tween: Tween<double>(begin: 0.0, end: 1),
+                        duration: const Duration(milliseconds: 3500),
+                        builder: (context, value, _) =>
+                            CircularProgressIndicator(value: value),
+                      ) // Display the progress indicator while loading
                     : Image.network(
                         'https://www.freepnglogos.com/uploads/barcode-png/barcode-openkm-18.png',
                         width: 200,
