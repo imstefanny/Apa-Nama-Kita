@@ -1,22 +1,10 @@
-import 'package:ac_88/bottomnavigation.dart';
-import 'package:ac_88/home/home.dart';
-import 'package:ac_88/payment/payment.dart';
-import 'package:ac_88/profile/editprofile.dart';
 import 'package:ac_88/profile/imgprovider.dart';
-import 'package:ac_88/register/register.dart';
-import 'package:ac_88/reservation/reservation.dart';
-import 'package:ac_88/topup/topUp.dart';
-import 'package:ac_88/transaction/OrderDetail.dart';
-import 'package:ac_88/transaction/confirmPayment.dart';
-import 'package:ac_88/verification/verification.dart';
+import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:ac_88/home/homeProvider.dart';
-import 'package:ac_88/profile/profile.dart';
-import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:ac_88/register/registerProvider.dart';
-import 'package:ac_88/transaction/transaction.dart';
 import 'enginnerdetail/engineerprovider.dart';
 
 void main() {

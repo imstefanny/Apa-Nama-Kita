@@ -1,16 +1,16 @@
-import 'package:ac_88/bottomnavigation.dart';
+import 'package:ac_88/login/ChangeForgotPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Verification extends StatefulWidget {
-  const Verification({super.key});
+class VerifForgotPass extends StatefulWidget {
+  const VerifForgotPass({super.key});
 
   @override
-  State<Verification> createState() => _VerificationState();
+  State<VerifForgotPass> createState() => _VerifForgotPassState();
 }
 
-class _VerificationState extends State<Verification> {
+class _VerifForgotPassState extends State<VerifForgotPass> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -201,7 +201,7 @@ class _VerificationState extends State<Verification> {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => BottomNavBar()));
+                            MaterialPageRoute(builder: (_) => ChangeForgotPass()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(13, 110, 253, 1),
@@ -209,7 +209,7 @@ class _VerificationState extends State<Verification> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        "Login",
+                        "Change Password",
                         style: GoogleFonts.lexendDeca(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,

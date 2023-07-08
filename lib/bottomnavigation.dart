@@ -3,7 +3,6 @@ import 'package:ac_88/profile/profile.dart';
 import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

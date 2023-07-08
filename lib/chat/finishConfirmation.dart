@@ -1,7 +1,5 @@
-import 'package:ac_88/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class FinishConfirmation extends StatefulWidget {
   final String name;
