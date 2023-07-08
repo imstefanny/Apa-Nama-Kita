@@ -1,10 +1,8 @@
-import 'package:ac_88/home/home.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:ac_88/verification/verification.dart';
+import 'package:ac_88/verification/verificationforgotpass.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ac_88/bottomnavigation.dart';
-import 'package:ac_88/transaction/transaction.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
@@ -114,12 +112,20 @@ class _LoginState extends State<Login> {
                               fontSize: 16,
                             ),
                           ),
-                          Text(
-                            "Forgot password ?",
-                            style: GoogleFonts.lexendDeca(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                              fontSize: 16,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    VerifForgotPass()));
+                            },
+                            child: Text(
+                              "Forgot password ?",
+                              style: GoogleFonts.lexendDeca(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ],
