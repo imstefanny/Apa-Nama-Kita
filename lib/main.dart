@@ -2,6 +2,7 @@ import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/home/home.dart';
 import 'package:ac_88/payment/payment.dart';
 import 'package:ac_88/profile/editprofile.dart';
+import 'package:ac_88/profile/imgprovider.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/reservation/reservation.dart';
 import 'package:ac_88/topup/topUp.dart';
@@ -24,6 +25,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => eyeProvider()),
       ChangeNotifierProvider(create: (_) => themeProvider()),
       ChangeNotifierProvider(create: (_) => EngineerProvider()),
+      ChangeNotifierProvider(create: (_) => ImagePickerProvider()),
     ], child: const MyApp()),
   );
 }

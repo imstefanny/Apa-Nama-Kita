@@ -1,14 +1,14 @@
 import 'dart:io';
-
+import 'package:ac_88/profile/imgprovider.dart';
 import 'package:ac_88/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../register/registerProvider.dart';
+import 'Image_Picker_Button.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});
@@ -18,21 +18,10 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
-  File? image;
-
-  Future pickImage(source) async {
-    final image = await ImagePicker().pickImage(source: source);
-    if (image == null) return;
-
-    final imageTmp = File(image.path);
-    setState(() {
-      this.image = imageTmp;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<registerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProvider>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -71,10 +60,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            image != null
+                            imgprov.img != null
                                 ? ClipOval(
                                     child: Image.file(
-                                      image!,
+                                      File(imgprov.img!.path),
                                       width: 150,
                                       height: 150,
                                       fit: BoxFit.cover,
@@ -113,24 +102,14 @@ class _ProfileEditState extends State<ProfileEdit> {
                                                   mainAxisSize:
                                                       MainAxisSize.min,
                                                   children: <Widget>[
-                                                    ElevatedButton(
-                                                        child: const Text(
-                                                            'Choose from galery'),
-                                                        onPressed: () {
-                                                          pickImage(ImageSource
-                                                              .gallery);
-                                                          Navigator.pop(
-                                                              context);
-                                                        }),
-                                                    ElevatedButton(
-                                                        child: const Text(
-                                                            'Choose from camera'),
-                                                        onPressed: () {
-                                                          pickImage(ImageSource
-                                                              .camera);
-                                                          Navigator.pop(
-                                                              context);
-                                                        }),
+                                                    ButtonImagePicker(
+                                                        isGallery: true,
+                                                        title:
+                                                            'Choose from Gallery',),
+                                                    ButtonImagePicker(
+                                                        isGallery: false,
+                                                        title:
+                                                            'Choose from Camera'),
                                                   ],
                                                 ),
                                               ),

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:ac_88/profile/editprofile.dart';
+import 'package:ac_88/profile/imgprovider.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +21,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<registerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProvider>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -46,10 +50,20 @@ class _ProfileState extends State<Profile> {
                 clipBehavior: Clip.none,
                 fit: StackFit.expand,
                 children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://loremflickr.com/320/240?random=8"),
-                  ),
+                  imgprov.img != null
+                                ? ClipOval(
+                                    child: Image.file(
+                                      File(imgprov.img!.path),
+                                      width: 150,
+                                      height: 150,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : CircleAvatar(
+                                    radius: 75,
+                                    backgroundImage: NetworkImage(
+                                        "https://loremflickr.com/320/240?random=8"),
+                                  ),
                   Positioned(
                     bottom: -8,
                     right: -30,
