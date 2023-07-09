@@ -1,4 +1,6 @@
+import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmPaymentPage extends StatefulWidget {
   @override
@@ -10,7 +12,7 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
 
   void enterDigit(String digit) {
     setState(() {
-      enteredPin += digit;
+      if (enteredPin.length < 4) enteredPin += digit;
     });
   }
 
@@ -28,13 +30,25 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Payment Confirmed'),
+            title: Row(
+              children: [
+                Icon(Icons.check_circle_outline_rounded,
+                    color: Colors.green[400]),
+                Text(
+                  '   Payment Confirmed',
+                  style: TextStyle(color: Colors.green[400]),
+                ),
+              ],
+            ),
             content: Text('Your payment has been successfully confirmed.'),
             actions: <Widget>[
               TextButton(
                 child: Text('OK'),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => Transaction()));
                 },
               ),
             ],
@@ -120,7 +134,14 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Confirm Payment'),
+        title: Text(
+          'Confirm Payment',
+          style: TextStyle(color: Colors.black),
+          // style: GoogleFonts.lexendDeca(
+          //     fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 2,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -186,7 +207,7 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  buildPinBackspace(width),
+                  buildPinDigit('#', width),
                   buildPinDigit('0', width),
                   buildPinBackspace(width),
                 ],

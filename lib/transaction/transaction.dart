@@ -1,6 +1,8 @@
+import 'package:ac_88/transaction/dummy.dart';
 import 'package:ac_88/transaction/transactionWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../chat/chat.dart';
 
@@ -16,6 +18,10 @@ class _TransactionState extends State<Transaction> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    var provHist = Provider.of<TransactionProvider>(context);
+
+    List<Widget> ongoingwidget = [];
+    
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -47,8 +53,6 @@ class _TransactionState extends State<Transaction> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(17, 20, 17, 0),
                 child: Container(
-                  height: 155,
-                  width: 350,
                   decoration: BoxDecoration(
                       color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(10)),
@@ -191,39 +195,16 @@ class _TransactionState extends State<Transaction> {
             ),
             SingleChildScrollView(
               child: Column(
-                children: [
-                  TransactionWidget(
-                    name: "Dudung",
-                    problem: "Selang AC Bocor",
-                    price: 120000,
-                    price1: 115560,
-                    status: false,
-                    date: '28 April 2023',
-                  ),
-                  TransactionWidget(
-                    name: "Dadang",
-                    problem: "Cuci AC",
-                    price: 50000,
-                    price1: 48150,
-                    status: true,
-                    date: '23 April 2023',
-                  ),
-                  TransactionWidget(
-                    name: "Dodong",
-                    problem: "Freon Bocor",
-                    price: 150000,
-                    price1: 144450,
-                    status: false,
-                    date: '18 April 2023',
-                  ),
-                  TransactionWidget(
-                    name: "Dedeng",
-                    problem: "Compresor Rusak",
-                    price: 350000,
-                    price1: 337050,
-                    status: false,
-                    date: '14 April 2023',
-                  ),
+                children: <Widget>[
+                  for (var i = 0; i < provHist.dummyData["dummy"].length; i++)
+                    TransactionWidget(
+                      name: provHist.dummyData["dummy"][i]["name"],
+                      problem: provHist.dummyData["dummy"][i]["problem"],
+                      price: provHist.dummyData["dummy"][i]["price"],
+                      price1: provHist.dummyData["dummy"][i]["price1"],
+                      status: provHist.dummyData["dummy"][i]["status"],
+                      date: provHist.dummyData["dummy"][i]["date"],
+                    ),
                 ],
               ),
             )

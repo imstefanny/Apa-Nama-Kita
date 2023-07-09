@@ -6,7 +6,7 @@ class OrderDetail extends StatefulWidget {
   String date;
   String name;
   String problem;
-  bool? status;
+  int status;
   int price;
 
   OrderDetail({
@@ -48,7 +48,7 @@ class _OrderDetailState extends State<OrderDetail> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 16, bottom: 8, left: 16),
-            child: widget.status == false
+            child: widget.status == 1
                 ? Text(
                     "Order Completed",
                     style: GoogleFonts.lexendDeca(
@@ -57,7 +57,7 @@ class _OrderDetailState extends State<OrderDetail> {
                         color: Colors.black),
                   )
                 : Text(
-                    "Order Canceled",
+                    "Order Cancelled",
                     style: GoogleFonts.lexendDeca(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

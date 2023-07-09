@@ -10,7 +10,7 @@ class TransactionWidget extends StatefulWidget {
   int price;
   int price1;
   String date;
-  bool status = false;
+  int status;
   TransactionWidget({
     Key? key,
     required this.name,
@@ -47,8 +47,6 @@ class _TransactionWidgetState extends State<TransactionWidget> {
             decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(10)),
-            height: 0.2 * height,
-            width: 350,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,11 +64,19 @@ class _TransactionWidgetState extends State<TransactionWidget> {
                         ),
                       ),
                       Text(
-                        !widget.status ? "Completed" : "Cancelled",
+                        widget.status == 1
+                            ? "Completed"
+                            : widget.status == 2
+                                ? ""
+                                : "Cancelled",
                         style: GoogleFonts.lexendDeca(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: !widget.status ? Colors.green : Colors.red),
+                            color: widget.status == 1
+                                ? Colors.green
+                                : widget.status == 2
+                                    ? Colors.white
+                                    : Colors.red),
                       )
                     ],
                   ),
@@ -127,77 +133,39 @@ class _TransactionWidgetState extends State<TransactionWidget> {
                         ),
                       ],
                     ),
-                    !widget.status
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 8, top: 8),
-                                    child: Text(
-                                      "Total Harga",
-                                      style: GoogleFonts.lexendDeca(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                          color: Colors.grey[500]),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 8,
-                                    ),
-                                    child: Text(
-                                      CurrencyFormat.convertToIdr(
-                                          widget.price1, 0),
-                                      style: GoogleFonts.lexendDeca(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8, top: 8),
+                              child: Text(
+                                "Total Harga",
+                                style: GoogleFonts.lexendDeca(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.grey[500]),
                               ),
-                            ],
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 8, top: 8),
-                                    child: Text(
-                                      "Total Harga",
-                                      style: GoogleFonts.lexendDeca(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                          color: Colors.grey[500]),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 8,
-                                    ),
-                                    child: Text(
-                                      CurrencyFormat.convertToIdr(
-                                          widget.price1, 0),
-                                      style: GoogleFonts.lexendDeca(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 8,
                               ),
-                            ],
-                          ),
+                              child: Text(
+                                CurrencyFormat.convertToIdr(widget.price1, 0),
+                                style: GoogleFonts.lexendDeca(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ],
