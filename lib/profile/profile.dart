@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ac_88/login/login.dart';
 import 'package:ac_88/profile/ChangePassword.dart';
 import 'package:ac_88/profile/editprofile.dart';
 import 'package:ac_88/profile/imgprovider.dart';
@@ -88,7 +89,7 @@ class _ProfileState extends State<Profile> {
                     fontWeight: FontWeight.w400, fontSize: 20)),
             Text("${prov.tfaddress.text}",
                 style: GoogleFonts.lexendDeca(
-                    fontWeight: FontWeight.w400, fontSize: 20)),
+                    fontWeight: FontWeight.w400, fontSize: 16)),
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 0.07 * height,
@@ -122,7 +123,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                       margin: EdgeInsets.only(right: 0.02 * width),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 80),
+                        padding: EdgeInsets.only(left: 0.2 * width),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(context,
@@ -269,7 +270,7 @@ class _ProfileState extends State<Profile> {
                                       onPressed: () {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
-                                                builder: (_) => Register()));
+                                                builder: (_) => Login()));
                                       },
                                       child: Text("Logout",
                                           style: GoogleFonts.lexendDeca(

@@ -1,4 +1,5 @@
 import 'package:ac_88/profile/imgprovider.dart';
+import 'package:ac_88/profile/profile.dart';
 import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen()
+      home: SplashScreen(),
     );
   }
 }
