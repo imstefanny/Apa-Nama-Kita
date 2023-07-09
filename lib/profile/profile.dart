@@ -29,6 +29,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         elevation: 2,
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         title: Text(
           "AC88",

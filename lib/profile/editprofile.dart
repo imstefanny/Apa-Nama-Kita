@@ -103,9 +103,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                                                       MainAxisSize.min,
                                                   children: <Widget>[
                                                     ButtonImagePicker(
-                                                        isGallery: true,
-                                                        title:
-                                                            'Choose from Gallery',),
+                                                      isGallery: true,
+                                                      title:
+                                                          'Choose from Gallery',
+                                                    ),
                                                     ButtonImagePicker(
                                                         isGallery: false,
                                                         title:
@@ -187,9 +188,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)))),
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (_) => Profile()));
+                                    Navigator.of(context).pop();
                                   },
                                   child: Text("Save",
                                       style: GoogleFonts.lexendDeca(
