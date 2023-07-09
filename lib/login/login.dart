@@ -114,10 +114,8 @@ class _LoginState extends State<Login> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (_) =>
-                                                    VerifForgotPass()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (_) => VerifForgotPass()));
                             },
                             child: Text(
                               "Forgot password ?",
