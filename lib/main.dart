@@ -1,5 +1,6 @@
 import 'package:ac_88/home/home.dart';
 import 'package:ac_88/profile/imgprovider.dart';
+import 'package:ac_88/profile/profile.dart';
 import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:ac_88/transaction/confirmPayment.dart';
 import 'package:ac_88/transaction/dummy.dart';
@@ -38,12 +39,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     _portraitModeOnly();
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          fontFamily: 'LexendDeca',
-        ),
-        home: Transaction());
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: SplashScreen(),
+    );
   }
 }
