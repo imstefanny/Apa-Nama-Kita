@@ -201,15 +201,6 @@ class _RegisterState extends State<Register> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (_) => Login()));
-                                            // Fluttertoast.showToast(
-                                            //   msg:
-                                            //       "Register berhasil. Silahkan login!",
-                                            //   toastLength: Toast.LENGTH_SHORT,
-                                            //   gravity: ToastGravity.BOTTOM,
-                                            //   timeInSecForIosWeb: 1,
-                                            //   backgroundColor: Colors.grey[800],
-                                            //   textColor: Colors.white,
-                                            // );
                                             var _snackBar = CustomSnackBar();
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(_snackBar.getSnackBar(
@@ -267,7 +258,8 @@ class _RegisterState extends State<Register> {
                               )
                             ],
                           ),
-                        )
+                        ),
+                        SizedBox(height: 25),
                       ],
                     )),
                   )

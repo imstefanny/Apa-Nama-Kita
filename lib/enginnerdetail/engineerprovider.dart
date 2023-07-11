@@ -39,8 +39,8 @@ class EngineerProvider extends ChangeNotifier {
       {
         "name": "Suyanti",
         "img": "https://loremflickr.com/320/240?random=3",
-        "location": "Medan Tuntungan",
-        "address": "Jln. Sekata No 36",
+        "location": "Medan Area",
+        "address": "Jln. Duyung No 36",
         "price": "100,000",
         "Service": "Isi Freon",
         "more": [

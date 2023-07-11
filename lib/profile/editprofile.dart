@@ -31,7 +31,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         ),
         backgroundColor: Colors.white,
         title: Text(
-          "AC88",
+          "Edit Profile",
           style: GoogleFonts.lexendDeca(
               fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
         ),
@@ -46,14 +46,6 @@ class _ProfileEditState extends State<ProfileEdit> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 0.07 * width),
-                      child: Text(
-                        "Edit Profile",
-                        style: GoogleFonts.lexendDeca(
-                            fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                    ),
                     Padding(
                         padding: EdgeInsets.only(
                             left: 0.07 * width, top: 0.03 * height),
@@ -103,9 +95,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                                                       MainAxisSize.min,
                                                   children: <Widget>[
                                                     ButtonImagePicker(
-                                                        isGallery: true,
-                                                        title:
-                                                            'Choose from Gallery',),
+                                                      isGallery: true,
+                                                      title:
+                                                          'Choose from Gallery',
+                                                    ),
                                                     ButtonImagePicker(
                                                         isGallery: false,
                                                         title:
@@ -162,7 +155,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                               errorText: prov.isAddressEmpty
                                   ? "Address may not be empty"
                                   : null,
-                              hintText: 'Jln. Juda',
+                              hintText: 'Jln. Kuda',
                               hintStyle: TextStyle(fontSize: 15),
                               isDense: true,
                               contentPadding: EdgeInsets.all(12),
@@ -187,9 +180,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)))),
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (_) => Profile()));
+                                    Navigator.of(context).pop();
                                   },
                                   child: Text("Save",
                                       style: GoogleFonts.lexendDeca(
