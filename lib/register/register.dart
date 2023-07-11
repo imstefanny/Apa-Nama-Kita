@@ -66,7 +66,7 @@ class _RegisterState extends State<Register> {
                           controller: prov.tfname,
                           decoration: InputDecoration(
                             filled: true,
-                            hintText: 'Sukro',
+                            hintText: 'Enter Your Name',
                             hintStyle: TextStyle(fontSize: 15),
                             isDense: true,
                             contentPadding: EdgeInsets.all(12),
@@ -86,7 +86,7 @@ class _RegisterState extends State<Register> {
                           controller: prov.tfaddress,
                           decoration: InputDecoration(
                             filled: true,
-                            hintText: 'Jln. Kuda',
+                            hintText: 'Enter Your Address',
                             hintStyle: TextStyle(fontSize: 15),
                             isDense: true,
                             contentPadding: EdgeInsets.all(12),
@@ -106,7 +106,7 @@ class _RegisterState extends State<Register> {
                           controller: prov.tfemail,
                           decoration: InputDecoration(
                             filled: true,
-                            hintText: 'email@domain.com',
+                            hintText: 'Enter Your Email',
                             hintStyle: TextStyle(fontSize: 15),
                             isDense: true,
                             contentPadding: EdgeInsets.all(12),

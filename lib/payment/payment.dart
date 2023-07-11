@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:ac_88/payment/uploadreceipt.dart';
+import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../profile/imgprovider.dart';
 import '../register/registerProvider.dart';
 
 class Payment extends StatefulWidget {
@@ -33,7 +35,7 @@ class _PaymentState extends State<Payment> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     var prov = Provider.of<registerProvider>(context);
-    var imgprov = Provider.of<ImagePickerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProviderProfile>(context);
     return Scaffold(
         appBar: AppBar(
           elevation: 2,
@@ -131,7 +133,7 @@ class _PaymentState extends State<Payment> {
                 child: _isLoading
                     ? TweenAnimationBuilder<double>(
                         tween: Tween<double>(begin: 0.0, end: 1),
-                        duration: const Duration(milliseconds: 3500),
+                        duration: const Duration(milliseconds: 3000),
                         builder: (context, value, _) =>
                             CircularProgressIndicator(value: value),
                       ) // Display the progress indicator while loading
@@ -161,23 +163,27 @@ class _PaymentState extends State<Payment> {
                 ),
               ),
               Center(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 17),
-                child: SizedBox(
-                  height: 55,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(13, 110, 253, 1),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      onPressed: () {},
-                      child: Text(
-                        "Upload Receipt",
-                        style: GoogleFonts.lexendDeca(
-                            fontSize: 16, fontWeight: FontWeight.w400),
-                      )),
-                ),
-              ))
+                      child: Padding(
+                      padding: const EdgeInsets.only(top: 17),
+                      child: SizedBox(
+                        height: 55,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Color.fromRGBO(13, 110, 253, 1),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15))),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => UploadReceipt()));
+                            },
+                            child: Text(
+                              "Upload Receipt",
+                              style: GoogleFonts.lexendDeca(
+                                  fontSize: 16, fontWeight: FontWeight.w400),
+                            )),
+                      ),
+                    )),
             ]),
           ),
         ));

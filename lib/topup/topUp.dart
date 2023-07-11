@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:ac_88/payment/payment.dart';
+import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:ac_88/topup/nominalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../profile/imgprovider.dart';
+import '../profile/imgproviderprofile.dart';
 
 class TopUp extends StatefulWidget {
   const TopUp({super.key});
@@ -32,7 +33,7 @@ class _TopUpState extends State<TopUp> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     var prov = Provider.of<registerProvider>(context);
-    var imgprov = Provider.of<ImagePickerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProviderProfile>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 2,

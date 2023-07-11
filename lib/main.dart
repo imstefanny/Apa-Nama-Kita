@@ -1,5 +1,5 @@
-import 'package:ac_88/home/home.dart';
-import 'package:ac_88/profile/imgprovider.dart';
+import 'package:ac_88/payment/uploadreceipt.dart';
+import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/profile/profile.dart';
 import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:ac_88/transaction/confirmPayment.dart';
@@ -19,8 +19,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => eyeProvider()),
       ChangeNotifierProvider(create: (_) => themeProvider()),
       ChangeNotifierProvider(create: (_) => EngineerProvider()),
-      ChangeNotifierProvider(create: (_) => ImagePickerProvider()),
-      ChangeNotifierProvider(create: (_) => TransactionProvider()),
+      ChangeNotifierProvider(create: (_) => ImagePickerProviderProfile()),
     ], child: const MyApp()),
   );
 }

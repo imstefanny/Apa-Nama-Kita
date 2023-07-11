@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:ac_88/login/login.dart';
 import 'package:ac_88/profile/ChangePassword.dart';
 import 'package:ac_88/profile/editprofile.dart';
-import 'package:ac_88/profile/imgprovider.dart';
+import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<registerProvider>(context);
-    var imgprov = Provider.of<ImagePickerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProviderProfile>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
