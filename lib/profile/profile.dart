@@ -200,23 +200,20 @@ class _ProfileState extends State<Profile> {
                             color: Color.fromRGBO(13, 110, 253, 1),
                             borderRadius: BorderRadius.circular(5)),
                       ),
-                      Row(
-                        children: [
-                          Text('Notifications',
-                              style: GoogleFonts.lexendDeca(
-                                  fontWeight: FontWeight.w400, fontSize: 16)),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 140),
-                            child: Switch(
-                                value: _notif,
-                                onChanged: (bool value) {
-                                  // This is called when the user toggles the switch.
-                                  setState(() {
-                                    _notif = value;
-                                  });
-                                }),
-                          )
-                        ],
+                      Text('Notifications',
+                          style: GoogleFonts.lexendDeca(
+                              fontWeight: FontWeight.w400, fontSize: 16)),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Switch(
+                              value: _notif,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  _notif = value;
+                                });
+                              }),
+                        ),
                       )
                     ]),
                     Divider(),
