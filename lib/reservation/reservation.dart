@@ -191,7 +191,6 @@ class _ReservationState extends State<Reservation> {
               ),
             ),
             Container(
-              height: 0.38 * height,
               child: Column(children: [
                 for (var i = 0; i < more.length; i++)
                   Padding(

@@ -86,7 +86,7 @@ class _RegisterState extends State<Register> {
                           controller: prov.tfaddress,
                           decoration: InputDecoration(
                             filled: true,
-                            hintText: 'Jln. Juda',
+                            hintText: 'Jln. Kuda',
                             hintStyle: TextStyle(fontSize: 15),
                             isDense: true,
                             contentPadding: EdgeInsets.all(12),
@@ -258,7 +258,8 @@ class _RegisterState extends State<Register> {
                               )
                             ],
                           ),
-                        )
+                        ),
+                        SizedBox(height: 25),
                       ],
                     )),
                   )

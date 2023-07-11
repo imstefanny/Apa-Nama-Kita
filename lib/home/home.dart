@@ -57,8 +57,9 @@ class _HomeState extends State<Home> {
           Padding(
             padding: const EdgeInsets.only(left: 15, top: 8, right: 15),
             child: Container(
-              height: 0.75 * height,
               child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
                     childAspectRatio: 3 / 5,
@@ -68,8 +69,6 @@ class _HomeState extends State<Home> {
                   itemCount: tmp.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return Container(
-                      width: 140,
-                      height: 250,
                       child: GestureDetector(
                         onTap: () {},
                         child: GestureDetector(

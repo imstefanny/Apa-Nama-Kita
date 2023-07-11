@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../profile/imgprovider.dart';
+import '../register/registerProvider.dart';
 
 class Payment extends StatefulWidget {
   const Payment({super.key});
@@ -15,7 +21,7 @@ class _PaymentState extends State<Payment> {
   void initState() {
     super.initState();
     // Simulating image loading delay
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
       });
@@ -26,6 +32,8 @@ class _PaymentState extends State<Payment> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    var prov = Provider.of<registerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProvider>(context);
     return Scaffold(
         appBar: AppBar(
           elevation: 2,
@@ -41,7 +49,6 @@ class _PaymentState extends State<Payment> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            height: 1 * height,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Padding(
@@ -50,50 +57,62 @@ class _PaymentState extends State<Payment> {
                     decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(15)),
-                    height: 120,
-                    width: 350,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(13, 0, 0, 0),
-                            child: CircleAvatar(
-                              radius: 50,
-                              child: Icon(Icons.account_circle),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(13, 0, 0, 0),
+                              child: imgprov.img != null
+                                  ? ClipOval(
+                                      child: Image.file(
+                                        File(imgprov.img!.path),
+                                        width: 150,
+                                        height: 150,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  : CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage(
+                                          "https://loremflickr.com/320/240?random=8"),
+                                    ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(17, 15, 0, 15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                                    child: Text(
-                                      "Kelly",
-                                      style:
-                                          GoogleFonts.lexendDeca(fontSize: 24),
+                          Expanded(
+                              flex: 2,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(17, 15, 0, 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    !prov.tfname.text.isEmpty
+                                        ? Text("${prov.tfname.text}",
+                                            style: GoogleFonts.lexendDeca(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 24))
+                                        : Text("<Your name>",
+                                            style: GoogleFonts.lexendDeca(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 24)),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          0, 14, 0, 0),
+                                      child: Text(
+                                        "Rp 88,000",
+                                        style: GoogleFonts.lexendDeca(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400),
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 14, 0, 0),
-                                    child: Text(
-                                      "Rp 88,000",
-                                      style: GoogleFonts.lexendDeca(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ],
+                                  ],
+                                ),
+                              )),
+                        ],
+                      ),
                     ),
                   )),
               Center(
@@ -121,12 +140,14 @@ class _PaymentState extends State<Payment> {
                         width: 200,
                       ),
               )),
-              Padding(
-                padding: const EdgeInsets.only(top: 17, left: 25),
-                child: Text(
-                  "How to pay",
-                  style: GoogleFonts.lexendDeca(
-                      fontSize: 16, fontWeight: FontWeight.w400),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 17, left: 25),
+                  child: Text(
+                    "How to pay",
+                    style: GoogleFonts.lexendDeca(
+                        fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
                 ),
               ),
               Center(

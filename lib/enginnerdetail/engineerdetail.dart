@@ -111,21 +111,24 @@ class _EngineerDetailState extends State<EngineerDetail> {
           color: Colors.grey,
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.only(top: 15),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => Reservation(
-                      index: widget.index,
-                    )));
-          },
-          child: Text("Reserved"),
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              minimumSize: Size(250, 55),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15))),
+      Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => Reservation(
+                        index: widget.index,
+                      )));
+            },
+            child: Text("Reserved"),
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                minimumSize: Size(250, 55),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15))),
+          ),
         ),
       )
     ]));
