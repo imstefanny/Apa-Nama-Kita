@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ac_88/profile/imgprovider.dart';
+import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -20,7 +20,7 @@ class _ProfileEditState extends State<ProfileEdit> {
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<registerProvider>(context);
-    var imgprov = Provider.of<ImagePickerProvider>(context);
+    var imgprov = Provider.of<ImagePickerProviderProfile>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(

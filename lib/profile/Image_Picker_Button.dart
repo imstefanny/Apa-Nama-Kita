@@ -1,4 +1,4 @@
-import 'package:ac_88/profile/imgprovider.dart';
+import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ class ButtonImagePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<ImagePickerProvider>(context);
+    final prov = Provider.of<ImagePickerProviderProfile>(context);
     return ElevatedButton(
       onPressed: () async {
         await prov.pickImage(isGallery);

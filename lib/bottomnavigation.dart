@@ -2,6 +2,7 @@ import 'package:ac_88/home/home.dart';
 import 'package:ac_88/profile/profile.dart';
 import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -33,23 +34,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: buildNavigator(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedNavBar,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt), label: 'Transaction'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-        ],
-        selectedItemColor: Colors.blue,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+    return WillPopScope(
+      onWillPop: () async {
+        // Exit the app when the back button is pressed
+        SystemNavigator.pop();
+        return false; // Prevent further back navigation
+      },
+      child: Scaffold(
+        body: buildNavigator(),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedNavBar,
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list_alt), label: 'Transaction'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+          ],
+          selectedItemColor: Colors.blue,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+        ),
       ),
     );
   }

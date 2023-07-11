@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ImagePickerProvider extends ChangeNotifier {
+class ImagePickerProviderProfile extends ChangeNotifier {
   bool _isImageLoaded = false;
   bool get isImageLoaded => _isImageLoaded;
   set setIsImageLoaded(val) {
