@@ -1,10 +1,13 @@
 import 'package:ac_88/bottomnavigation.dart';
+import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class Verification extends StatefulWidget {
-  const Verification({super.key});
+  String purpose;
+  Verification({Key? key, required this.purpose}) : super(key: key);
 
   @override
   State<Verification> createState() => _VerificationState();
@@ -13,6 +16,7 @@ class Verification extends StatefulWidget {
 class _VerificationState extends State<Verification> {
   @override
   Widget build(BuildContext context) {
+    var prov = Provider.of<registerProvider>(context);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -21,14 +25,14 @@ class _VerificationState extends State<Verification> {
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: SingleChildScrollView(
-          child: Container(
-            height: 0.9 * height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(25, 17, 25, 0),
+                    padding: const EdgeInsets.fromLTRB(25, 7, 25, 0),
                     child: Image.asset(
                       "assets/login.png",
                       width: 200,
@@ -49,9 +53,9 @@ class _VerificationState extends State<Verification> {
                 ),
                 Center(
                   child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 60, 25, 0),
+                      padding: const EdgeInsets.fromLTRB(25, 40, 25, 0),
                       child: Text(
-                        "We have sent verification code to your email, Please enter the verification code below.",
+                        "We have sent verification code to your email (${prov.tfemail.text}), please enter the verification code below.",
                         style: GoogleFonts.lexendDeca(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
@@ -196,7 +200,7 @@ class _VerificationState extends State<Verification> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 90, 25, 0),
+                  padding: const EdgeInsets.fromLTRB(25, 40, 25, 0),
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
@@ -209,7 +213,7 @@ class _VerificationState extends State<Verification> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        "Login",
+                        "${widget.purpose}",
                         style: GoogleFonts.lexendDeca(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,

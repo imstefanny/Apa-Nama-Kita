@@ -32,7 +32,8 @@ class _OrderDetailState extends State<OrderDetail> {
     double GrandTotal = Total - discount;
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pop(context);
+        print('asdadasdad');
+        Navigator.of(context).pop();
         return false;
       },
       child: Scaffold(

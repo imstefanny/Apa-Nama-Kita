@@ -1,7 +1,6 @@
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:ac_88/verification/verification.dart';
-import 'package:ac_88/verification/verificationforgotpass.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +25,8 @@ class _LoginState extends State<Login> {
     } else {
       if (email.text == email_reg.text && pwd.text == pass_reg.text) {
         authenticate = true;
+      } else {
+        authenticate = false;
       }
     }
   }
@@ -79,11 +80,11 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(25, 5, 25, 17),
+                      padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
                       child: TextField(
                         onChanged: (value) {
                           setState(() {
-                            isEmailEmpty = false;
+                            isEmailEmpty = email.text.isEmpty;
                             authentication(prov.tfemail, prov.tfpass);
                           });
                         },
@@ -116,7 +117,8 @@ class _LoginState extends State<Login> {
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (_) => VerifForgotPass()));
+                                  builder: (_) => Verification(
+                                      purpose: 'Change Password')));
                             },
                             child: Text(
                               "Forgot password ?",
@@ -135,7 +137,7 @@ class _LoginState extends State<Login> {
                       child: TextField(
                         onChanged: (value) {
                           setState(() {
-                            isPassEmpty = false;
+                            isPassEmpty = pwd.text.isEmpty;
                             authentication(prov.tfemail, prov.tfpass);
                           });
                         },
@@ -160,7 +162,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 17, 25, 17),
+                      padding: const EdgeInsets.fromLTRB(25, 17, 25, 5),
                       child: Center(
                         child: Row(
                           children: [
@@ -171,13 +173,13 @@ class _LoginState extends State<Login> {
                                     : () {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
-                                                builder: (_) =>
-                                                    Verification()));
+                                                builder: (_) => Verification(
+                                                    purpose: 'Login')));
                                       },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor:
                                         Color.fromRGBO(13, 110, 253, 1),
-                                    minimumSize: Size(0, 60),
+                                    minimumSize: Size(0, 50),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(15))),
@@ -195,12 +197,12 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 15),
+                      padding: const EdgeInsets.only(top: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Doesn`t Have an Account?",
+                            "Doesn't have an account?",
                             style: GoogleFonts.lexendDeca(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -216,7 +218,7 @@ class _LoginState extends State<Login> {
                                         builder: (_) => Register()));
                               },
                               child: Text(
-                                'Register',
+                                'Sign Up',
                                 style: GoogleFonts.lexendDeca(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
