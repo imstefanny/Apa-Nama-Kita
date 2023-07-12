@@ -1,6 +1,7 @@
 import 'package:ac_88/payment/uploadreceipt.dart';
 import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/profile/profile.dart';
+import 'package:ac_88/register/register.dart';
 import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:ac_88/transaction/confirmPayment.dart';
 import 'package:ac_88/transaction/dummy.dart';
@@ -20,6 +21,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => themeProvider()),
       ChangeNotifierProvider(create: (_) => EngineerProvider()),
       ChangeNotifierProvider(create: (_) => ImagePickerProviderProfile()),
+      ChangeNotifierProvider(create: (_) => TransactionProvider()),
     ], child: const MyApp()),
   );
 }

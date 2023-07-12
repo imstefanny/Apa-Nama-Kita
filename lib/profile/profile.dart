@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ac_88/about/about.dart';
 import 'package:ac_88/login/login.dart';
 import 'package:ac_88/profile/ChangePassword.dart';
 import 'package:ac_88/profile/editprofile.dart';
@@ -158,13 +159,16 @@ class _ProfileState extends State<Profile> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 5, right: 10),
-                        padding: EdgeInsets.all(5),
-                        child: Icon(Icons.language, color: Colors.white),
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(13, 110, 253, 1),
-                            borderRadius: BorderRadius.circular(5)),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 5, right: 10),
+                          padding: EdgeInsets.all(5),
+                          child: Icon(Icons.language, color: Colors.white),
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(13, 110, 253, 1),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
                       ),
                       Text('Languages',
                           style: GoogleFonts.lexendDeca(
@@ -177,13 +181,17 @@ class _ProfileState extends State<Profile> {
                             builder: (_) => ChangePassword()));
                       },
                       child: Row(children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 5, right: 10),
-                          padding: EdgeInsets.all(5),
-                          child: Icon(Icons.lock_outlined, color: Colors.white),
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(13, 110, 253, 1),
-                              borderRadius: BorderRadius.circular(5)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 5, right: 10),
+                            padding: EdgeInsets.all(5),
+                            child:
+                                Icon(Icons.lock_outlined, color: Colors.white),
+                            decoration: BoxDecoration(
+                                color: Color.fromRGBO(13, 110, 253, 1),
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
                         ),
                         Text('Change password',
                             style: GoogleFonts.lexendDeca(
@@ -216,6 +224,29 @@ class _ProfileState extends State<Profile> {
                         ),
                       )
                     ]),
+                    Divider(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) => About()));
+                      },
+                      child: Row(children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 5, right: 10),
+                            padding: EdgeInsets.all(5),
+                            child: Icon(Icons.info, color: Colors.white),
+                            decoration: BoxDecoration(
+                                color: Color.fromRGBO(13, 110, 253, 1),
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                        ),
+                        Text('About',
+                            style: GoogleFonts.lexendDeca(
+                                fontWeight: FontWeight.w400, fontSize: 16))
+                      ]),
+                    ),
                     Divider(),
                     GestureDetector(
                         onTap: () {
@@ -276,13 +307,16 @@ class _ProfileState extends State<Profile> {
                               });
                         },
                         child: Row(children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 5, right: 10),
-                            padding: EdgeInsets.all(5),
-                            child: Icon(Icons.logout, color: Colors.white),
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(5)),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Container(
+                              margin: EdgeInsets.only(left: 5, right: 10),
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.logout, color: Colors.white),
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(5)),
+                            ),
                           ),
                           Text('Logout',
                               style: GoogleFonts.lexendDeca(

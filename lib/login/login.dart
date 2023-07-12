@@ -1,3 +1,4 @@
+import 'package:ac_88/register/register.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:ac_88/verification/verification.dart';
 import 'package:ac_88/verification/verificationforgotpass.dart';
@@ -191,6 +192,40 @@ class _LoginState extends State<Login> {
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Doesn`t Have an Account?",
+                            style: GoogleFonts.lexendDeca(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => Register()));
+                              },
+                              child: Text(
+                                'Register',
+                                style: GoogleFonts.lexendDeca(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     )
                   ],
