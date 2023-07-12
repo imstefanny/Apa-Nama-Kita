@@ -2,11 +2,9 @@ import 'package:ac_88/home/home.dart';
 import 'package:ac_88/profile/profile.dart';
 import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({Key? key});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -14,11 +12,12 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedNavBar = 0;
-  Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
-    0: GlobalKey<NavigatorState>(),
-    1: GlobalKey<NavigatorState>(),
-    2: GlobalKey<NavigatorState>(),
-  };
+  final GlobalKey<NavigatorState> _homeNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _transactionNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _profileNavigatorKey =
+      GlobalKey<NavigatorState>();
 
   final List<Widget> _body = [
     const Home(),
@@ -32,10 +31,73 @@ class _BottomNavBarState extends State<BottomNavBar> {
     });
   }
 
+  GlobalKey<NavigatorState> _getCurrentNavigatorKey() {
+    switch (_selectedNavBar) {
+      case 0:
+        return _homeNavigatorKey;
+      case 1:
+        return _transactionNavigatorKey;
+      case 2:
+        return _profileNavigatorKey;
+      default:
+        return _homeNavigatorKey;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildNavigator(),
+      body: WillPopScope(
+        onWillPop: () async {
+          final NavigatorState navigator =
+              _getCurrentNavigatorKey().currentState!;
+          if (navigator.canPop()) {
+            navigator.pop();
+            return false; // Prevent default back button behavior
+          }
+          return true; // Proceed with default back button behavior
+        },
+        child: Stack(
+          children: [
+            Offstage(
+              offstage: _selectedNavBar != 0,
+              child: Navigator(
+                key: _homeNavigatorKey,
+                onGenerateRoute: (RouteSettings settings) {
+                  return MaterialPageRoute(
+                    settings:settings,
+                    builder: (BuildContext context) => Home(),
+                  );
+                },
+              ),
+            ),
+            Offstage(
+              offstage: _selectedNavBar != 1,
+              child: Navigator(
+                key: _transactionNavigatorKey,
+                onGenerateRoute: (RouteSettings settings) {
+                  return MaterialPageRoute(
+                    settings:settings,
+                    builder: (BuildContext context) => Transaction(),
+                  );
+                },
+              ),
+            ),
+            Offstage(
+              offstage: _selectedNavBar != 2,
+              child: Navigator(
+                key: _profileNavigatorKey,
+                onGenerateRoute: (RouteSettings settings) {
+                  return MaterialPageRoute(
+                    settings:settings,
+                    builder: (BuildContext context) => Profile(),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedNavBar,
         onTap: _onItemTapped,
@@ -52,16 +114,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
       ),
-    );
-  }
-
-  buildNavigator() {
-    return Navigator(
-      key: navigatorKeys[_selectedNavBar],
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(
-            builder: (_) => _body.elementAt(_selectedNavBar));
-      },
     );
   }
 }
