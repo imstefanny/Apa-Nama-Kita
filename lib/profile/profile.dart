@@ -227,8 +227,7 @@ class _ProfileState extends State<Profile> {
                     Divider(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (_) => About()));
+                        showMyBottomSheet(context);
                       },
                       child: Row(children: [
                         Padding(
