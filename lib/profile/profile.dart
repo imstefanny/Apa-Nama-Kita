@@ -1,5 +1,6 @@
 import 'package:ac_88/admin/logoutConfirm.dart';
 import 'package:ac_88/login/login.dart';
+import 'package:ac_88/profile/bottomSheet.dart';
 import 'package:ac_88/profile/changePassword.dart';
 import 'package:ac_88/transaction/withdraw.dart';
 import 'package:flutter/material.dart';
@@ -128,7 +129,6 @@ class _ProfileState extends State<Profile> {
                   top: 0.025 * height,
                   left: 0.025 * width,
                   right: 0.025 * width),
-              height: 0.25 * height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -205,6 +205,26 @@ class _ProfileState extends State<Profile> {
                           }),
                     )
                   ]),
+                  const Divider(),
+                  GestureDetector(
+                    onTap: () {
+                      showMyBottomSheet(context);
+                    },
+                    child: Row(children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 5, right: 10),
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: const Color.fromRGBO(13, 110, 253, 1),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Icon(Icons.question_mark_sharp,
+                            color: Colors.white),
+                      ),
+                      Text('About us',
+                          style: GoogleFonts.lexendDeca(
+                              fontWeight: FontWeight.w400, fontSize: 16))
+                    ]),
+                  ),
                   const Divider(),
                   GestureDetector(
                     onTap: () {

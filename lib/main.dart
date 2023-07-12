@@ -1,3 +1,4 @@
+import 'package:ac_88/engineerHome.dart';
 import 'package:ac_88/splashscreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: GoogleFonts.lexendDeca().fontFamily),
-      home: const SplashScreen(),
+      home: const EngineerHome(),
     );
   }
 }

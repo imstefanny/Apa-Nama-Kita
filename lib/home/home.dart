@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   final List<OrderType> orderList = [
     OrderType('Rivaldi', 'assets/sumin2.png'),
     OrderType('Ipana',
-        'https://pps.whatsapp.net/v/t61.24694-24/347444188_770687688034791_1454181639949193737_n.jpg?ccb=11-4&oh=01_AdQPKVJYgfYA_rX_HYQay1JoXVSQD6bvI9PIadvyXQ-5tA&oe=64A3D73E'),
+        'https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/04/09/1847891814.png'),
     OrderType('Paris fernandes',
         'https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/04/09/1847891814.png'),
     OrderType('Bartender Meow', 'assets/meong-bartender.jpg'),
