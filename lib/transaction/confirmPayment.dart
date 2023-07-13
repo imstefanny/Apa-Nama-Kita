@@ -1,3 +1,4 @@
+import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,10 +46,8 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
               TextButton(
                 child: Text('OK'),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => Transaction()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => BottomNavBar()));
                 },
               ),
             ],
@@ -134,6 +133,10 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
         title: Text(
           'Confirm Payment',
           style: TextStyle(color: Colors.black),
@@ -141,7 +144,6 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
           //     fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
         ),
         backgroundColor: Colors.white,
-        elevation: 2,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

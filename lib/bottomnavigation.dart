@@ -4,7 +4,8 @@ import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key});
+
+  BottomNavBar({Key? key,});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();

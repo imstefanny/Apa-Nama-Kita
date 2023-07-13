@@ -1,4 +1,5 @@
 import 'package:ac_88/bottomnavigation.dart';
+import 'package:ac_88/profile/ChangePassword.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +8,9 @@ import 'package:provider/provider.dart';
 
 class Verification extends StatefulWidget {
   String purpose;
-  Verification({Key? key, required this.purpose}) : super(key: key);
+  bool status = false;
+  Verification({Key? key, required this.purpose, required this.status})
+      : super(key: key);
 
   @override
   State<Verification> createState() => _VerificationState();
@@ -204,9 +207,14 @@ class _VerificationState extends State<Verification> {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (_) => BottomNavBar()),
-                            ModalRoute.withName('/'));
+                        if (widget.status == false) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (_) => BottomNavBar()),
+                              ModalRoute.withName('/'));
+                        } else {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => ChangePassword()));
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(13, 110, 253, 1),
