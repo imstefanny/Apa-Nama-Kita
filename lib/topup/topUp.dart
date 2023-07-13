@@ -68,7 +68,7 @@ class _TopUpState extends State<TopUp> {
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(13, 0, 0, 0),
                               child: imgprov.img != null
-                                  ? ClipOval(
+                                  ? ClipRRect(
                                       child: Image.file(
                                         File(imgprov.img!.path),
                                         width: 150,
