@@ -73,7 +73,7 @@ class _TopUpState extends State<TopUp> {
                                         File(imgprov.img!.path),
                                         width: 150,
                                         height: 150,
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.fill,
                                       ),
                                     )
                                   : CircleAvatar(

@@ -12,6 +12,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ac_88/topup/topUp.dart';
 import 'package:provider/provider.dart';
 
+import '../snackbar.dart';
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -59,7 +61,7 @@ class _ProfileState extends State<Profile> {
                               File(imgprov.img!.path),
                               width: 150,
                               height: 150,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ),
                           )
                         : CircleAvatar(
@@ -219,6 +221,18 @@ class _ProfileState extends State<Profile> {
                               onChanged: (bool value) {
                                 setState(() {
                                   _notif = value;
+
+                                  if (_notif == false) {
+                                    var _snackBar = CustomSnackBar();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        _snackBar.getSnackBar(context,
+                                            "Your Notification is disabled"));
+                                  } else {
+                                    var _snackBar = CustomSnackBar();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        _snackBar.getSnackBar(context,
+                                            "Your Notification is enabled"));
+                                  }
                                 });
                               }),
                         ),

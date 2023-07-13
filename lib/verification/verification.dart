@@ -204,8 +204,9 @@ class _VerificationState extends State<Verification> {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => BottomNavBar()));
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (_) => BottomNavBar()),
+                            ModalRoute.withName('/'));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(13, 110, 253, 1),
