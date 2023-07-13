@@ -118,6 +118,7 @@ class _LoginState extends State<Login> {
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => Verification(
+                                    status: true,
                                       purpose: 'Change Password')));
                             },
                             child: Text(
@@ -174,6 +175,7 @@ class _LoginState extends State<Login> {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (_) => Verification(
+                                                  status: false,
                                                     purpose: 'Login')));
                                       },
                                 style: ElevatedButton.styleFrom(

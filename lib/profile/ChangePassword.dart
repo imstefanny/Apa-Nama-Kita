@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../bottomnavigation.dart';
+
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
 
@@ -95,12 +97,15 @@ class _ChangePasswordState extends State<ChangePassword> {
             Align(
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
-                  onPressed:
-                      (newPass.isEmpty || currPass.isEmpty || rePass.isEmpty)
-                          ? null
-                          : () {
-                              Navigator.pop(context);
-                            },
+                  onPressed: (newPass.isEmpty ||
+                          currPass.isEmpty ||
+                          rePass.isEmpty)
+                      ? null
+                      : () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (_) => BottomNavBar()),
+                              ModalRoute.withName('/'));
+                        },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(13, 110, 253, 1),
                       shape: const StadiumBorder(),
