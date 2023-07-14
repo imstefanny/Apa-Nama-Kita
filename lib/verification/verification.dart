@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../login/login.dart';
+
 class Verification extends StatefulWidget {
   String purpose;
   bool status = false;
@@ -208,9 +210,8 @@ class _VerificationState extends State<Verification> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (widget.status == false) {
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (_) => BottomNavBar()),
-                              ModalRoute.withName('/'));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => Login()));
                         } else {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (_) => ChangePassword()));
