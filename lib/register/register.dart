@@ -1,3 +1,4 @@
+import 'package:ac_88/verification/verification.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -200,7 +201,10 @@ class _RegisterState extends State<Register> {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (_) => Login()));
+                                                  builder: (_) => Verification(
+                                                      purpose: "Register",
+                                                      status: false),
+                                                ));
                                             var _snackBar = CustomSnackBar();
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(_snackBar.getSnackBar(
@@ -245,7 +249,9 @@ class _RegisterState extends State<Register> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => Login()));
+                                          builder: (_) => Verification(
+                                              purpose: "Verify",
+                                              status: false)));
                                 },
                                 child: Text(
                                   'Login',

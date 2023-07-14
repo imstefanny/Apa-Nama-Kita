@@ -7,6 +7,7 @@ import 'package:ac_88/profile/editprofile.dart';
 import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/register/register.dart';
 import 'package:ac_88/register/registerProvider.dart';
+import 'package:ac_88/verification/verification.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ac_88/topup/topUp.dart';
@@ -180,7 +181,7 @@ class _ProfileState extends State<Profile> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => ChangePassword()));
+                            builder: (_) => Verification(purpose: "Change Password", status: true)));
                       },
                       child: Row(children: [
                         Padding(
@@ -226,12 +227,12 @@ class _ProfileState extends State<Profile> {
                                     var _snackBar = CustomSnackBar();
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         _snackBar.getSnackBar(context,
-                                            "Your Notification is disabled"));
+                                            "Notification has been disabled"));
                                   } else {
                                     var _snackBar = CustomSnackBar();
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         _snackBar.getSnackBar(context,
-                                            "Your Notification is enabled"));
+                                            "Notification has been enabled"));
                                   }
                                 });
                               }),
@@ -304,9 +305,9 @@ class _ProfileState extends State<Profile> {
                                           backgroundColor: Colors.red,
                                         ),
                                         onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (_) => Login()));
+                                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (_) => Login()),
+                              ModalRoute.withName('/'));
                                         },
                                         child: Text("Logout",
                                             style: GoogleFonts.lexendDeca(

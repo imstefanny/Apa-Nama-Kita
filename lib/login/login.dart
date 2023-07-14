@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../bottomnavigation.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -118,7 +120,7 @@ class _LoginState extends State<Login> {
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => Verification(
-                                    status: true,
+                                      status: true,
                                       purpose: 'Change Password')));
                             },
                             child: Text(
@@ -172,11 +174,12 @@ class _LoginState extends State<Login> {
                                 onPressed: !authenticate
                                     ? null
                                     : () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (_) => Verification(
-                                                  status: false,
-                                                    purpose: 'Login')));
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        BottomNavBar()),
+                                                ModalRoute.withName('/'));
                                       },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor:
@@ -214,10 +217,8 @@ class _LoginState extends State<Login> {
                             padding: const EdgeInsets.only(left: 5),
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => Register()));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => Register()));
                               },
                               child: Text(
                                 'Sign Up',
