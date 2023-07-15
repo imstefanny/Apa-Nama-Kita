@@ -35,17 +35,17 @@ class TransactionProvider extends ChangeNotifier {
         "price": 350000,
         "price1": 337050,
         "status": 1,
-        "date": '14 April 2023',
+        "date": '15 April 2023',
       },
     ],
-    "ongoing":[
+    "ongoing": [
       {
         "name": "Diding",
         "problem": "Isi Ulang Freon",
         "price": 350000,
         "price1": 337050,
         "status": 2,
-        "date": '07 Mei 2023',
+        "date": '07 May 2023',
       },
     ]
   };
