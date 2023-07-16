@@ -15,57 +15,53 @@ class Transaction extends StatefulWidget {
 class _TransactionState extends State<Transaction> {
   List<Map<String, dynamic>> filteredTransactions = [];
   List<Map<String, dynamic>> allTransactions = [];
+  bool isFiltered = false;
+  DateTime? selectedDate;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize filteredTransactions with allTransactions
+    filteredTransactions = List.from(allTransactions);
+  }
+
+  void sortTransactionsByDate(DateTime selectedDate) {
+    setState(() {
+      DateFormat inputFormat = DateFormat('dd MMMM yyyy', 'en_US');
+      DateFormat outputFormat = DateFormat('yyyy-MM-dd');
+
+      filteredTransactions = allTransactions.where((transaction) {
+        DateTime transactionDate = inputFormat.parse(transaction['date']);
+        return DateFormat('yyyy-MM-dd').format(transactionDate) ==
+            DateFormat('yyyy-MM-dd').format(selectedDate);
+      }).toList();
+      filteredTransactions.sort((a, b) {
+        DateTime dateA = inputFormat.parse(a['date']);
+        DateTime dateB = inputFormat.parse(b['date']);
+        return dateA.compareTo(dateB);
+      });
+      isFiltered = true;
+      this.selectedDate = selectedDate;
+    });
+  }
+
+  Future<void> showDatePickerDialog() async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (selectedDate != null) {
+      sortTransactionsByDate(selectedDate);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     var provHist = Provider.of<TransactionProvider>(context);
     allTransactions = List.from(provHist.dummyData['dummy']);
-    filteredTransactions = List.from(allTransactions);
-    void sortTransactionsByDate(DateTime selectedDate) {
-      setState(() {
-        DateFormat dateFormat = DateFormat('dd MMMM yyyy', 'en_US');
-    filteredTransactions = allTransactions
-        .where((transaction) {
-          DateTime transactionDate = dateFormat.parse(transaction['date']);
-          return transactionDate.year == selectedDate.year &&
-              transactionDate.month == selectedDate.month &&
-              transactionDate.day == selectedDate.day;
-        })
-        .toList();
-        filteredTransactions.sort((a, b) {
-          DateTime dateA = DateTime.parse(a['date']);
-          DateTime dateB = DateTime.parse(b['date']);
-          return dateA.compareTo(dateB);
-        });
-      });
-    }
-
-    Future<void> showDatePickerDialog() async {
-      final DateTime? selectedDate = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2100),
-      );
-
-      if (selectedDate != null) {
-        sortTransactionsByDate(selectedDate);
-      }
-    }
-
-    List<Widget> ongoingwidget = [];
-    for (int i = 0; i < provHist.dummyData["ongoing"].length; i++) {
-      ongoingwidget.add(TransactionWidget(
-        name: provHist.dummyData["ongoing"][i]["name"],
-        problem: provHist.dummyData["ongoing"][i]["problem"],
-        price: provHist.dummyData["ongoing"][i]["price"],
-        price1: provHist.dummyData["ongoing"][i]["price1"],
-        status: provHist.dummyData["ongoing"][i]["status"],
-        date: provHist.dummyData["ongoing"][i]["date"],
-      ));
-    }
 
     return DefaultTabController(
       length: 2,
@@ -99,7 +95,19 @@ class _TransactionState extends State<Transaction> {
           children: [
             SingleChildScrollView(
               child: Column(
-                children: ongoingwidget,
+                children: List<Widget>.generate(
+                  provHist.dummyData["ongoing"].length,
+                  (index) {
+                    return TransactionWidget(
+                      name: provHist.dummyData["ongoing"][index]["name"],
+                      problem: provHist.dummyData["ongoing"][index]["problem"],
+                      price: provHist.dummyData["ongoing"][index]["price"],
+                      price1: provHist.dummyData["ongoing"][index]["price1"],
+                      status: provHist.dummyData["ongoing"][index]["status"],
+                      date: provHist.dummyData["ongoing"][index]["date"],
+                    );
+                  },
+                ),
               ),
             ),
             SingleChildScrollView(
@@ -120,14 +128,43 @@ class _TransactionState extends State<Transaction> {
                       ),
                     ),
                   ),
-                  for (var i = 0; i < filteredTransactions.length; i++)
-                    TransactionWidget(
-                      name: filteredTransactions[i]["name"],
-                      problem: filteredTransactions[i]["problem"],
-                      price: filteredTransactions[i]["price"],
-                      price1: filteredTransactions[i]["price1"],
-                      status: filteredTransactions[i]["status"],
-                      date: filteredTransactions[i]["date"],
+                  if (isFiltered && filteredTransactions.isNotEmpty)
+                    Column(
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: filteredTransactions.length,
+                          itemBuilder: (context, index) {
+                            return TransactionWidget(
+                              name: filteredTransactions[index]["name"],
+                              problem: filteredTransactions[index]["problem"],
+                              price: filteredTransactions[index]["price"],
+                              price1: filteredTransactions[index]["price1"],
+                              status: filteredTransactions[index]["status"],
+                              date: filteredTransactions[index]["date"],
+                            );
+                          },
+                        ),
+                      ],
+                    )
+                  else if (isFiltered && filteredTransactions.isEmpty)
+                    Container(
+                      child: Text("You have no data on this date"),
+                    )
+                  else
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: allTransactions.length,
+                      itemBuilder: (context, index) {
+                        return TransactionWidget(
+                          name: allTransactions[index]["name"],
+                          problem: allTransactions[index]["problem"],
+                          price: allTransactions[index]["price"],
+                          price1: allTransactions[index]["price1"],
+                          status: allTransactions[index]["status"],
+                          date: allTransactions[index]["date"],
+                        );
+                      },
                     ),
                   const SizedBox(height: 10.0),
                 ],
