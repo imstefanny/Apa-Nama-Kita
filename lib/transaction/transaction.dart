@@ -1,3 +1,4 @@
+import 'package:ac_88/snackbar.dart';
 import 'package:ac_88/transaction/dummy.dart';
 import 'package:ac_88/transaction/transactionWidget.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,19 @@ class _TransactionState extends State<Transaction> {
     super.initState();
     // Initialize filteredTransactions with allTransactions
     filteredTransactions = List.from(allTransactions);
+  }
+
+  void clearFilter() {
+    setState(() {
+      selectedDate = null;
+      isFiltered = false;
+    });
+
+    var _snackBar = CustomSnackBar();
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(_snackBar.getSnackBar(
+                                                    context,
+                                                    "Filter Selected Dates Removed",));
   }
 
   void sortTransactionsByDate(DateTime selectedDate) {
@@ -55,6 +69,14 @@ class _TransactionState extends State<Transaction> {
 
     if (selectedDate != null) {
       sortTransactionsByDate(selectedDate);
+    }
+  }
+
+  String formatSelectedDate() {
+    if (selectedDate != null) {
+      return DateFormat('dd MMMM yyyy').format(selectedDate!);
+    } else {
+      return 'No date selected';
     }
   }
 
@@ -113,20 +135,46 @@ class _TransactionState extends State<Transaction> {
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      showDatePickerDialog();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15, top: 15),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Icon(
-                          Icons.filter_alt_outlined,
-                          size: 45,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: selectedDate != null
+                            ? GestureDetector(
+                                onTap: clearFilter,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Filtered Date ${formatSelectedDate()}',
+                                      style: GoogleFonts.lexendDeca(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Icon(Icons.close)
+                                  ],
+                                ),
+                              )
+                            : Container(),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          showDatePickerDialog();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 15, top: 15),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: Icon(
+                              Icons.filter_alt_outlined,
+                              size: 45,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                   if (isFiltered && filteredTransactions.isNotEmpty)
                     Column(
