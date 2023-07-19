@@ -10,7 +10,7 @@ class CustomSnackBar {
         right: 15,
       ),
       content: Text(content),
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
     );
   }
 }

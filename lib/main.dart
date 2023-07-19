@@ -1,3 +1,4 @@
+import 'package:ac_88/bottomnavigation.dart';
 import 'package:ac_88/payment/uploadreceipt.dart';
 import 'package:ac_88/profile/imgproviderprofile.dart';
 import 'package:ac_88/profile/profile.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Transaction(),
+      home: SplashScreen(),
     );
   }
 }
