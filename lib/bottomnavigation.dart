@@ -4,8 +4,9 @@ import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
-
-  BottomNavBar({Key? key,});
+  BottomNavBar({
+    Key? key,
+  });
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -66,7 +67,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 key: _homeNavigatorKey,
                 onGenerateRoute: (RouteSettings settings) {
                   return MaterialPageRoute(
-                    settings:settings,
+                    settings: settings,
                     builder: (BuildContext context) => Home(),
                   );
                 },
@@ -78,7 +79,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 key: _transactionNavigatorKey,
                 onGenerateRoute: (RouteSettings settings) {
                   return MaterialPageRoute(
-                    settings:settings,
+                    settings: settings,
                     builder: (BuildContext context) => Transaction(),
                   );
                 },
@@ -90,7 +91,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 key: _profileNavigatorKey,
                 onGenerateRoute: (RouteSettings settings) {
                   return MaterialPageRoute(
-                    settings:settings,
+                    settings: settings,
                     builder: (BuildContext context) => Profile(),
                   );
                 },

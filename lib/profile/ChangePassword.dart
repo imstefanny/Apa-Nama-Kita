@@ -1,3 +1,4 @@
+import 'package:ac_88/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 import '../bottomnavigation.dart';
@@ -103,7 +104,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                       ? null
                       : () {
                           Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (_) => BottomNavBar()),
+                              MaterialPageRoute(builder: (_) => Profile()),
                               ModalRoute.withName('/'));
                         },
                   style: ElevatedButton.styleFrom(

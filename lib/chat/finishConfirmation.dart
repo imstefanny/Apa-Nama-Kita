@@ -1,3 +1,5 @@
+import 'package:ac_88/bottomnavigation.dart';
+import 'package:ac_88/transaction/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -106,10 +108,9 @@ class _FinishConfirmationState extends State<FinishConfirmation> {
               onPressed: confirmCode.isEmpty
                   ? null
                   : () {
-                      var count = 0;
-                      Navigator.popUntil(context, (_) {
-                        return count++ == 2;
-                      });
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (_) => BottomNavBar()),
+                          ModalRoute.withName('/'));
                     },
               child: const Padding(
                 padding:
