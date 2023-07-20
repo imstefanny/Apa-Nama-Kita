@@ -121,7 +121,7 @@ class _LoginState extends State<Login> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => Verification(
                                       status: true,
-                                      purpose: 'Change Password')));
+                                      purpose: 'Change Password', forgot: true,)));
                             },
                             child: Text(
                               "Forgot password ?",

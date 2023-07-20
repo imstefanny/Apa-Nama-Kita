@@ -203,7 +203,7 @@ class _RegisterState extends State<Register> {
                                                 MaterialPageRoute(
                                                   builder: (_) => Verification(
                                                       purpose: "Register",
-                                                      status: false),
+                                                      status: false, forgot: false,),
                                                 ));
                                             var _snackBar = CustomSnackBar();
                                             ScaffoldMessenger.of(context)
@@ -251,7 +251,7 @@ class _RegisterState extends State<Register> {
                                       MaterialPageRoute(
                                           builder: (_) => Verification(
                                               purpose: "Verify",
-                                              status: false)));
+                                              status: false, forgot: false,)));
                                 },
                                 child: Text(
                                   'Login',
