@@ -1,4 +1,5 @@
 import 'package:ac_88/bottomnavigation.dart';
+import 'package:ac_88/login/ChangeForgotPassword.dart';
 import 'package:ac_88/profile/ChangePassword.dart';
 import 'package:ac_88/register/registerProvider.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ import '../login/login.dart';
 class Verification extends StatefulWidget {
   String purpose;
   bool status = false;
-  Verification({Key? key, required this.purpose, required this.status})
+  bool forgot = false;
+  Verification({Key? key, required this.purpose, required this.status,required this.forgot})
       : super(key: key);
 
   @override
@@ -212,7 +214,12 @@ class _VerificationState extends State<Verification> {
                         if (widget.status == false) {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (_) => Login()));
-                        } else {
+                        } 
+                        else if(widget.purpose == "Change Password"&&widget.status == true&&widget.forgot == true) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => ChangeForgotPass()));
+                        }
+                        else {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (_) => ChangePassword()));
                         }

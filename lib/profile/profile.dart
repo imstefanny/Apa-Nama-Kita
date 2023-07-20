@@ -181,7 +181,7 @@ class _ProfileState extends State<Profile> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => Verification(purpose: "Change Password", status: true)));
+                            builder: (_) => Verification(purpose: "Change Password", status: true, forgot: false,)));
                       },
                       child: Row(children: [
                         Padding(
